@@ -1,19 +1,19 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="node_files_handling" />
+  <img src="./.github/app.gif" alt="Full Stack project of Course www.luiztools.com.br" />
 
   &#xa0;
 </div>
 
-<h1 align="center">node_files_handling project</h1>
+<h1 align="center">Full Stack project of Course www.luiztools.com.br</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/alissoncavalcanticma/node_files_handling?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/alissoncavalcanticma/fs-js?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/alissoncavalcanticma/node_files_handling?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/alissoncavalcanticma/fs-js?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/alissoncavalcanticma/node_files_handling?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/alissoncavalcanticma/fs-js?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/alissoncavalcanticma/node_files_handling?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/alissoncavalcanticma/fs-js?color=56BEB8">
 
 </p>
 
@@ -30,7 +30,7 @@
 
 ## :dart: About ##
 
-Projeto de manipulação de arquivos csv usando streams com Node.js
+Full Stack project with Node.js and React, using microservices.
 
 ## :rocket: Technologies ##
 
@@ -47,16 +47,16 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/alissoncavalcanticma/node_files_handling
+$ git clone https://github.com/alissoncavalcanticma/fs-js
 
 # Access
-$ cd node_files_handling
+$ cd fs-js
 
 # Install dependencies
 $ npm i
 
 # Run the project
-$ npm run startDev
+$ npm start
 
 # The server will initialize in the <http://localhost:3000>
 ```
