@@ -1,14 +1,16 @@
 import { Router, Request, Response, NextFunction } from "express";
 import accountsController from "../controllers/accounts";
 
-//import Joi validator from account
-import { accountSchema } from "../models/account";
+//import Schemas do Joi validator from account
+import { accountSchema, loginSchema } from "../models/account";
+import Joi from "joi";
 
 const router = Router();
 
 //Create middleware e validação de body
-function validateAccount(req: Request, res: Response, next: any){
-    const {error} = accountSchema.validate(req.body);
+
+function validateSchema(schema: Joi.ObjectSchema<any>, req: Request, res: Response, next: any){
+    const {error} = schema.validate(req.body);
     if(error == null) return next();
 
     const {details} = error;
@@ -20,9 +22,22 @@ function validateAccount(req: Request, res: Response, next: any){
     res.status(422).end();
 }
 
+function validateAccount(req: Request, res: Response, next: any){
+    //retornando o response de validateSchema
+    return validateSchema(accountSchema, req, res, next);
+}
+
+function validateLogin(req: Request, res: Response, next: any){
+    //retornando o response de validateSchema
+    return validateSchema(loginSchema, req, res, next);
+}
+
 router.get('/accounts/', accountsController.getAccounts);
 router.get('/accounts/:id', accountsController.getAccount);
 router.post('/accounts/', validateAccount, accountsController.addAccount);
+router.patch('/accounts/:id', validateAccount, accountsController.setAccount);
+router.post('/accounts/login', validateLogin, accountsController.loginAccount);
+router.post('/accounts/logout', accountsController.logoutAccount);
 
 
 export default router;

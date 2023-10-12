@@ -35,4 +35,17 @@ export interface IAccount{
         .max(400)
 })
 
+export const loginSchema = Joi.object({
+    email: Joi.string()
+        .email()
+        .min(8)
+        .max(150)
+        .required(),
+    password: Joi.string()
+        .alphanum()
+        .min(6)
+        .max(50)
+})
+
+
 //export {accountSchema};

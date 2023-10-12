@@ -2,6 +2,8 @@
 import supertest from 'supertest';
 import app from '../src/app';
 import {Response} from 'express';
+//import global for @types jest
+import { describe, expect, it } from '@jest/globals';
 
 describe('Testando rotas do Account', () => {
     
@@ -37,6 +39,54 @@ describe('Testando rotas do Account', () => {
 
         expect(resultado.status).toEqual(422);
     });
+
+    it('PATCH /accounts/:id - Deve retornar statusCode 200', async () => {
+        const payload = {
+            name: 'Alisson',
+            email: 'alisson@alisson.com',
+            password: '245234'
+        }
+
+        //instancia variável que recebe a chamada do supertest no post accounts do app.ts
+        const resultado = await supertest(app)
+            .patch('/accounts/1')
+            .send(payload)
+
+        expect(resultado.status).toEqual(200);
+        expect(resultado.body.id).toBe(1);
+    });
+
+
+    it('PATCH /accounts/:id - Deve retornar statusCode 400', async () => {
+        const payload = {
+            name: 'Alisson',
+            email: 'alisson@alisson.com',
+            password: '245234'
+        }
+
+        //instancia variável que recebe a chamada do supertest no post accounts do app.ts
+        const resultado = await supertest(app)
+            .patch('/accounts/abs')
+            .send(payload)
+
+        expect(resultado.status).toEqual(400);
+    });
+
+    it('PATCH /accounts/:id - Deve retornar statusCode 404', async () => {
+        const payload = {
+            name: 'Alisson',
+            email: 'alisson@alisson.com',
+            password: '245234'
+        }
+
+        //instancia variável que recebe a chamada do supertest no post accounts do app.ts
+        const resultado = await supertest(app)
+            .patch('/accounts/-1')
+            .send(payload)
+
+        expect(resultado.status).toEqual(404);
+    });
+
 
     it('GET /accounts/ - Deve retornar statusCode 200', async () => {
         const resultado = await supertest(app)
