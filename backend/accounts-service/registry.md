@@ -4,10 +4,11 @@
 `npm i express helmet dotenv-safe` // Instalando dependências
 `npm i -g nodemon` // configurar script no package.json
 `npm i joi` // para validação de esquema
+`npm i sequelize mysql2` // Sequelize
 
 ##### Types da Dependências
 
-`npm i -D @types/node @types/express @types/joi`
+`npm i -D @types/node @types/express @types/joi @types/validator`
 
 ##### Config's
 
