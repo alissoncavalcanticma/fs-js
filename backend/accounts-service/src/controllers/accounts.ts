@@ -1,11 +1,20 @@
 import {Request, Response} from 'express';
 import { IAccount } from '../models/account';
 
+//import Account Model Sequelize
+import AccountRepository, {AccountModel} from '../models/accountModel';
+
 const accounts: IAccount[] = [];
 
 
-function getAccounts(req: Request, res: Response, next: any){
-    res.json(accounts);
+async function getAccounts(req: Request, res: Response, next: any){
+    
+    const accounts = await AccountRepository.findAll<AccountModel>();
+    res.json(accounts.map(item => {
+        item.password = '';
+        return item;
+    }));
+
 }
 
 function addAccount(req: Request, res: Response, next: any){

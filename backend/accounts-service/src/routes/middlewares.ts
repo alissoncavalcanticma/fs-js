@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 
 //import Schemas do Joi validator from account
-import { accountSchema, loginSchema } from "../models/account";
+import { accountSchema, loginSchema } from "../models/accountSchemas";
+
+//import lib Joi
 import Joi from "joi";
 
 //Create middleware e validação de body
