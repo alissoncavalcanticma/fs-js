@@ -5,6 +5,7 @@ import { accountSchema, accountUpdateSchema, loginSchema } from "../models/accou
 
 //import lib Joi
 import Joi from "joi";
+import auth from "../auth";
 
 //Create middleware e validação de body
 
@@ -35,6 +36,23 @@ function validateLogin(req: Request, res: Response, next: any){
     return validateSchema(loginSchema, req, res, next);
 }
 
+async function validateAuth(req: Request, res: Response, next: any){
+    try{
+        const token = req.headers['x-access-token'] as string;
+        if(!token) return res.status(401).end();
 
+        const payload = await auth.verify(token);
+        if(!payload) return res.status(400).end();
 
-export {validateAccount, validateLogin, validateUpdateAccount}
+        //recomendado pelo HTTP passar o payload pelo res.locals para a continuação da execução do controller
+        res.locals.payload = payload;
+
+        next();
+
+    }catch(e){
+        console.log(`validateAuth: ${e}`);
+        res.status(400).end();
+    }
+}
+
+export {validateAccount, validateLogin, validateUpdateAccount, validateAuth};

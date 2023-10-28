@@ -38,6 +38,7 @@ function sign(accountId: number){
     return jwt.sign(token, privateKey, {expiresIn: jwtExpires, algorithm: jwtAlgorithm});
 }
 
+
 async function verify(token: string){
     try{
         const decoded: Token = await jwt.verify(token, publicKey, {algorithm: [jwtAlgorithm]} as VerifyOptions) as Token;
