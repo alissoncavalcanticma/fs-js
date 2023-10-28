@@ -11,6 +11,7 @@
 
 `npm i jsonwebtoken`
 
+
 ##### Types da Dependências
 
 `npm i -D @types/node @types/express @types/joi @types/validator @types/jsonwebtoken`
@@ -72,3 +73,16 @@ coverageReporters: [
 Execute Jest Test:
 
 >npm run test 
+
+
+
+
+
+### Criação de Keys RSA
+
+##### Site de apoio:
+
+`https://www.csfieldguide.org.nz/en/interactives/rsa-key-generator/`
+
+-- KeySize: 2048 bits
+-- FormatScheme: PKCS #1 (base64)
