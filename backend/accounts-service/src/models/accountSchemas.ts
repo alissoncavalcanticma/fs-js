@@ -6,7 +6,6 @@ export const accountSchema = Joi.object({
         .integer()
         .min(1),
     name: Joi.string()
-        .alphanum()
         .min(3)
         .max(150)
         .required(),
@@ -21,7 +20,27 @@ export const accountSchema = Joi.object({
         .max(50),
     status: Joi.number()
         .min(100)
-        .max(400)
+        .max(400),
+    domain: Joi.string()
+        .min(5)
+        .max(50)
+})
+
+export const accountUpdateSchema = Joi.object({
+    name: Joi.string()
+        .min(3)
+        .max(150),
+    password: Joi.string()
+        .alphanum()
+        .min(6)
+        .max(50),
+    status: Joi.number()
+        .integer()
+        .min(100)
+        .max(400),
+    domain: Joi.string()
+        .min(5)
+        .max(50)
 })
 
 export const loginSchema = Joi.object({

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 //import Schemas do Joi validator from account
-import { accountSchema, loginSchema } from "../models/accountSchemas";
+import { accountSchema, accountUpdateSchema, loginSchema } from "../models/accountSchemas";
 
 //import lib Joi
 import Joi from "joi";
@@ -26,9 +26,15 @@ function validateAccount(req: Request, res: Response, next: any){
     return validateSchema(accountSchema, req, res, next);
 }
 
+function validateUpdateAccount(req: Request, res: Response, next: any){
+    return validateSchema(accountUpdateSchema, req, res, next);
+}
+
 function validateLogin(req: Request, res: Response, next: any){
     //retornando o response de validateSchema
     return validateSchema(loginSchema, req, res, next);
 }
 
-export {validateAccount, validateLogin}
+
+
+export {validateAccount, validateLogin, validateUpdateAccount}

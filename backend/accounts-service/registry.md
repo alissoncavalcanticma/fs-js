@@ -5,10 +5,15 @@
 `npm i -g nodemon` // configurar script no package.json
 `npm i joi` // para validação de esquema
 `npm i sequelize mysql2` // Sequelize
+`npm i bcryptjs` // bcryptjs para senha hash
+
+//Segurança
+
+`npm i jsonwebtoken`
 
 ##### Types da Dependências
 
-`npm i -D @types/node @types/express @types/joi @types/validator`
+`npm i -D @types/node @types/express @types/joi @types/validator @types/jsonwebtoken`
 
 ##### Config's
 
