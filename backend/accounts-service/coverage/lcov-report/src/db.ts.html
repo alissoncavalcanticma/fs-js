@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/app.ts</title>
+    <title>Code coverage report for src/db.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> app.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> db.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -92,23 +92,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
-import bodyParser from 'body-parser';
-import helmet from 'helmet';
-import accountsRouter from './routes/accounts';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Conexão ao banco de dados
 &nbsp;
-//Instanciando o express
-const app = express();
+import { Sequelize } from 'sequelize';
 &nbsp;
-//Definindo o user do helmet
-app.use(helmet());
-//Definindo o tratamento do body da req para JSON com body-parser
-app.use(bodyParser.json());
+const DB_NAME = process.env.DB_NAME!; 
+const DB_USER = process.env.DB_USER!; 
+const {DB_PASSWORD, DB_HOST} = process.env; 
 &nbsp;
-app.use(accountsRouter);
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+    dialect: 'mysql',
+    host: DB_HOST
+});
 &nbsp;
-export default app;</pre></td></tr></table></pre>
+export default sequelize;
+&nbsp;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

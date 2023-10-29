@@ -3,7 +3,7 @@ import { IAccount } from '../models/account';
 
 //import Account Model Sequelize
 //import AccountRepository, {AccountModel} from '../models/accountModel';
-import repository from '../models/accountModel';
+import repository from '../models/accountRepository';
 
 //import auth for bcrypt
 import auth from '../auth';
