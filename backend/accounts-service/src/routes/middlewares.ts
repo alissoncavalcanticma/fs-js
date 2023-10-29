@@ -58,4 +58,4 @@ async function validateAuth(req: Request, res: Response, next: any){
     }
 }
 
-export {validateAccount, validateLogin, validateUpdateAccount, validateAuth};
+export {validateAccountSchema, validateLoginSchema, validateUpdateAccountSchema, validateAuth};
