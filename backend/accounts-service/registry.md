@@ -75,6 +75,8 @@ Execute Jest Test:
 >npm run test 
 
 
+###### For using jest types in your code, should be import the declaration under to force function identification:
+> "import '@types/jest';" 
 
 
 

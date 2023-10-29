@@ -24,6 +24,7 @@ export const accountSchema = Joi.object({
     domain: Joi.string()
         .min(5)
         .max(50)
+        .required()
 })
 
 export const accountUpdateSchema = Joi.object({

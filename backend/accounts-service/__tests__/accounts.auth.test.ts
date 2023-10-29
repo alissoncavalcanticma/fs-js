@@ -1,8 +1,28 @@
 import supertest from "supertest";
 import app from "../src/app";
 //import global for @types jest
-import { describe, expect, it } from '@jest/globals';
-import { beforeEach } from "node:test";
+//import { describe, expect, it } from '@jest/globals';
+
+//import { beforeEach } from "node:test";
+//import force for types/jest
+import '@types/jest';
+
+//import functions repository
+import repository from "../src/models/accountRepository";
+import { IAccount } from "../src/models/account";
+
+
+//Data input for tests
+beforeAll(async () => {
+    const testAccount: IAccount = {
+        name: 'jestTest',
+        email: 'jestTest@gmail.com',
+        password: '12345',
+        domain: 'gmail.com'
+    }
+
+    const result = await repository.add(testAccount);
+});
 
 
 describe('Testando rodas de autenticação', () => {

@@ -4,16 +4,17 @@ import app from '../src/app';
 import {Response} from 'express';
 //import global for @types jest
 import { describe, expect, it } from '@jest/globals';
+import { IAccount } from '../src/models/account';
 
 describe('Testando rotas do Account', () => {
     
     it('POST /accounts/ - Deve retornar statusCode 201', async () => {
-        const payload = {
-            id: 1,
+        const payload: IAccount = {
             name: 'Alisson',
             email: 'alisson@alisson.com',
             password: '245234',
-            status: 100
+            status: 100,
+            domain: 'gmail.com'
         }
 
         //instancia variável que recebe a chamada do supertest no post accounts do app.ts
