@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.21% </span>
+                <span class="strong">59.01% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>41/61</span>
+                <span class='fraction'>36/61</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.21% </span>
+                <span class="strong">59.01% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>41/61</span>
+                <span class='fraction'>36/61</span>
             </div>
         
             
@@ -134,9 +134,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -147,27 +147,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -181,7 +177,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response, NextFunction } from "express";
 &nbsp;
@@ -207,28 +207,28 @@ function validateSchema(schema: Joi.ObjectSchema&lt;any&gt;, req: Request, res: 
     res.status(422).end();
 }
 &nbsp;
-function validateAccountSchema(req: Request, res: Response, next: any){
-    //retornando o response de validateSchema
-    return validateSchema(accountSchema, req, res, next);
-}
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validateAccountSchema(req: Request, res: Response, next: any){</span></span>
+<span class="cstat-no" title="statement not covered" >    //retornando o response de validateSchema</span>
+<span class="cstat-no" title="statement not covered" >    return validateSchema(accountSchema, req, res, next);</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validateUpdateAccountSchema(req: Request, res: Response, next: any){</span></span>
 <span class="cstat-no" title="statement not covered" >    return validateSchema(accountUpdateSchema, req, res, next);</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function validateLoginSchema(req: Request, res: Response, next: any){</span></span>
-<span class="cstat-no" title="statement not covered" >    //retornando o response de validateSchema</span>
-<span class="cstat-no" title="statement not covered" >    return validateSchema(loginSchema, req, res, next);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function validateLoginSchema(req: Request, res: Response, next: any){
+    //retornando o response de validateSchema
+    return validateSchema(loginSchema, req, res, next);
+}
 &nbsp;
 &nbsp;
 // Middleware de validação da autenticação
 &nbsp;
-async function validateAuth(req: Request, res: Response, next: any){
-    try{
-        const token = req.headers['x-access-token'] as string;
-        if(!token) return res.status(401).end();
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function validateAuth(req: Request, res: Response, next: any){</span></span>
+<span class="cstat-no" title="statement not covered" >    try{</span>
+<span class="cstat-no" title="statement not covered" >        const token = req.headers['x-access-token'] as string;</span>
+<span class="cstat-no" title="statement not covered" >        if(!token) return res.status(401).end();</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >        const payload = await auth.verify(token);</span>
 <span class="cstat-no" title="statement not covered" >        if(!payload) return res.status(400).end();</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -241,7 +241,7 @@ async function validateAuth(req: Request, res: Response, next: any){
 <span class="cstat-no" title="statement not covered" >        console.log(`validateAuth: ${e}`);</span>
 <span class="cstat-no" title="statement not covered" >        res.status(400).end();</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-}
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 export {validateAccountSchema, validateLoginSchema, validateUpdateAccountSchema, validateAuth};</pre></td></tr></table></pre>
 
@@ -250,7 +250,7 @@ export {validateAccountSchema, validateLoginSchema, validateUpdateAccountSchema,
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-29T19:33:57.988Z
+                at 2023-11-03T03:29:59.298Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

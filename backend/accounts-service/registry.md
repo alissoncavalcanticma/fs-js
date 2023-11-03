@@ -78,7 +78,9 @@ Execute Jest Test:
 ###### For using jest types in your code, should be import the declaration under to force function identification:
 > "import '@types/jest';" 
 
+###### For using environment variables in jest tests, should be uncomment in jest.config.js setupfiles[] and include "dotenv/config":
 
+>     setupFiles: ["dotenv/config"],
 
 ### Criação de Keys RSA
 

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">29.29% </span>
+                <span class="strong">41.41% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/99</span>
+                <span class='fraction'>41/99</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">29.29% </span>
+                <span class="strong">41.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/99</span>
+                <span class='fraction'>41/99</span>
             </div>
         
             
@@ -182,24 +182,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -214,6 +196,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -247,16 +230,33 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import {Request, Response} from 'express';
@@ -280,19 +280,19 @@ import auth from '../auth';
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-async function addAccount(req: Request, res: Response, next: any){
-    try{
-        const newAccount = req.body as IAccount;
-        newAccount.password = auth.hashPassword(newAccount.password);
-        const result = await repository.add(newAccount);
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >        newAccount.id = result.id;</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function addAccount(req: Request, res: Response, next: any){</span></span>
+<span class="cstat-no" title="statement not covered" >    try{</span>
+<span class="cstat-no" title="statement not covered" >        const newAccount = req.body as IAccount;</span>
+<span class="cstat-no" title="statement not covered" >        newAccount.password = auth.hashPassword(newAccount.password);</span>
+<span class="cstat-no" title="statement not covered" >        const result = await repository.add(newAccount);</span>
+<span class="cstat-no" title="statement not covered" >        newAccount.id = result.id;</span>
 <span class="cstat-no" title="statement not covered" >        newAccount.password = '';</span>
 <span class="cstat-no" title="statement not covered" >        res.status(201).json(newAccount);</span>
-    }catch(e){
-        console.log(e);
-        res.status(422).end();
-    }
-}
+<span class="cstat-no" title="statement not covered" >    }catch(e){</span>
+<span class="cstat-no" title="statement not covered" >        console.log(e);</span>
+<span class="cstat-no" title="statement not covered" >        res.status(422).end();</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function getAccount(req: Request, res: Response, next: any){</span></span>
 <span class="cstat-no" title="statement not covered" >    try{</span>
@@ -329,32 +329,32 @@ async function addAccount(req: Request, res: Response, next: any){
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function loginAccount(req: Request, res: Response, next: any){</span></span>
-<span class="cstat-no" title="statement not covered" >    try{</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        const loginParams = req.body as IAccount;</span>
-<span class="cstat-no" title="statement not covered" >        const account = await repository.findByEmail(loginParams.email);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        if(account !== null){</span>
-<span class="cstat-no" title="statement not covered" >            const isValid = auth.comparePassword(loginParams.password, account.password);</span>
-<span class="cstat-no" title="statement not covered" >            if(isValid){</span>
-<span class="cstat-no" title="statement not covered" >                const token = await auth.sign(account.id!);</span>
-<span class="cstat-no" title="statement not covered" >                res.json({auth: true, token});</span>
-<span class="cstat-no" title="statement not covered" >            }</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        </span>
-<span class="cstat-no" title="statement not covered" >        return res.status(401).end();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    }catch(e){</span>
+async function loginAccount(req: Request, res: Response, next: any){
+    try{
+&nbsp;
+        const loginParams = req.body as IAccount;
+        const account = await repository.findByEmail(loginParams.email);
+&nbsp;
+        if(account !== null){
+            const isValid = auth.comparePassword(loginParams.password, account.password);
+            if(isValid){
+                const token = await auth.sign(account.id!);
+                res.json({auth: true, token});
+            }
+        }
+        
+        return res.status(401).end();
+&nbsp;
+    }<span class="branch-0 cbranch-no" title="branch not covered" >catch(e){</span>
 <span class="cstat-no" title="statement not covered" >        console.log(e);</span>
 <span class="cstat-no" title="statement not covered" >        res.status(400).end();</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function logoutAccount(req: Request, res: Response, next: any){</span></span>
-<span class="cstat-no" title="statement not covered" >    res.json({auth: false, token: null}).end();</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+}
+&nbsp;
+function logoutAccount(req: Request, res: Response, next: any){
+    res.json({auth: false, token: null}).end();
+}
 &nbsp;
 &nbsp;
 export default {getAccounts, addAccount, getAccount, setAccount, loginAccount, logoutAccount};</pre></td></tr></table></pre>
@@ -364,7 +364,7 @@ export default {getAccounts, addAccount, getAccount, setAccount, loginAccount, l
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-29T19:33:57.988Z
+                at 2023-11-03T03:29:59.298Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

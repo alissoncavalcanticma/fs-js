@@ -6,15 +6,22 @@ import {Response} from 'express';
 import { describe, expect, it } from '@jest/globals';
 import { IAccount } from '../src/models/account';
 
+//constant's for test
+const testName = 'jestTest';
+const testEmail = 'jestTest@gmail.com';
+const testPassword = '$2a$10$m31vwe9khOWgI527g7s/o.2sy9vnFUAKJSuiaRasxD1Iui1z69/v6';
+const testDomain = 'gmail.com'
+
+
 describe('Testando rotas do Account', () => {
     
     it('POST /accounts/ - Deve retornar statusCode 201', async () => {
         const payload: IAccount = {
-            name: 'Alisson',
-            email: 'alisson@alisson.com',
-            password: '245234',
+            name: testName,
+            email: testEmail,
+            password: testPassword,
             status: 100,
-            domain: 'gmail.com'
+            domain: testDomain
         }
 
         //instancia variável que recebe a chamada do supertest no post accounts do app.ts

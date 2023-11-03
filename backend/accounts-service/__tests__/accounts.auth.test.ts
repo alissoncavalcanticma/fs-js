@@ -1,50 +1,54 @@
 import supertest from "supertest";
 import app from "../src/app";
 //import global for @types jest
-//import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it, beforeAll, afterAll } from '@jest/globals';
 
 //import { beforeEach } from "node:test";
-//import force for types/jest
-import '@types/jest';
 
 //import functions repository
 import repository from "../src/models/accountRepository";
 import { IAccount } from "../src/models/account";
 
+//constant's for test
+const testName = 'jestTest';
+const testEmail = 'jestTest@gmail.com';
+const testPassword = '123456';
+const hashPassword = '$2a$10$m31vwe9khOWgI527g7s/o.2sy9vnFUAKJSuiaRasxD1Iui1z69/v6';
+const testDomain = 'gmail.com'
 
 //Data input for tests
 beforeAll(async () => {
     const testAccount: IAccount = {
-        name: 'jestTest',
-        email: 'jestTest@gmail.com',
-        password: '12345',
-        domain: 'gmail.com'
+        name: testName,
+        email: testEmail,
+        password: hashPassword,
+        domain: testDomain
     }
 
     const result = await repository.add(testAccount);
+    console.log(`beforeAll: ${result}`);
 });
+
+// Data delete for tests
+afterAll(async () => {
+    const result = await repository.removeByEmail(testEmail);
+
+    console.log(`afterAll: ${result}`);
+});
+
+// Continuação da Aula no minuto 09:00
 
 
 describe('Testando rodas de autenticação', () => {
 
-    it('POST /accounts/login - 200 OK', async() =>{
-        //Mockin data
-        const newAccount = {
-            id: 1,
-            name: 'Alisson',
-            email: 'alisson@alisson.com',
-            password: '123456'
-        }
 
-        await supertest(app)
-            .post('/accounts/')
-            .send(newAccount)
+
+    it('POST /accounts/login - 200 OK', async() =>{
         
         //testing
-
         const payload = {
-            email: 'alisson@alisson.com',
-            password: '123456'
+            email: testEmail,
+            password: testPassword
         }
 
         const resultado = await supertest(app)
@@ -56,10 +60,27 @@ describe('Testando rodas de autenticação', () => {
         expect(resultado.body.auth).toBeTruthy();
     });
 
+
+
+    it('POST /accounts/login - 422 OK', async() =>{
+        const payload = {
+            email: testEmail,
+            password: 'abc'
+        }
+
+        const resultado = await supertest(app)
+            .post('/accounts/login')
+            .send(payload)
+
+        expect(resultado.status).toEqual(422);
+    });
+
+
+
     it('POST /accounts/login - 401 OK', async() =>{
         const payload = {
-            email: 'alisson@123.com',
-            password: '123456'
+            email: testEmail,
+            password: '123568'
         }
 
         const resultado = await supertest(app)
@@ -69,6 +90,8 @@ describe('Testando rodas de autenticação', () => {
         expect(resultado.status).toEqual(401);
     });
 
+
+
     it('POST /accounts/logout - 200 OK', async() =>{
         
         const resultado = await supertest(app)
@@ -77,4 +100,6 @@ describe('Testando rodas de autenticação', () => {
 
         expect(resultado.status).toEqual(200);
     });
+
+
 });

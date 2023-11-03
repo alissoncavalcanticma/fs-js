@@ -1,3 +1,5 @@
+//import DestryOption for Sequelize (lib for use delete function)
+import { DestroyOptions } from "sequelize";
 import { IAccount } from "./account";
 import accountModel, {IAccountModel} from "./accountModel";
 
@@ -33,7 +35,15 @@ async function set(id: number, account: IAccount){
     throw new Error(`Account not found.`);
 }
 
+function remove(id: number){
+    return accountModel.destroy({where: {id: id}} as DestroyOptions<IAccount>);
+}
+
+function removeByEmail(email: string){
+    return accountModel.destroy({where: {email: email}} as DestroyOptions<IAccount>);
+}
 
 
 
-export default {findAll, findById, findByEmail, add, set};
+
+export default {findAll, findById, findByEmail, add, set, remove, removeByEmail};
