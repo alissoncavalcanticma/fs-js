@@ -36,7 +36,6 @@ afterAll(async () => {
     console.log(`afterAll: ${result}`);
 });
 
-// Continuação da Aula no minuto 09:00
 
 
 describe('Testando rodas de autenticação', () => {

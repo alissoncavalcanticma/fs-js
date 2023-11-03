@@ -54,7 +54,10 @@ async function getAccount(req: Request, res: Response, next: any){
 async function setAccount(req: Request, res: Response, next: any){
     try{
         const accountId = parseInt(req.params.id);
-        if(!accountId) throw new Error('Id is in invalid format.');
+        if(!accountId){
+            throw new Error('Id is in invalid format.');
+            //res.status(400).end(0);
+        } 
 
         const accountParams = req.body as IAccount;
         accountParams.password = auth.hashPassword(accountParams.password);

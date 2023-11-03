@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.06% </span>
+                <span class="strong">75.51% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/49</span>
+                <span class='fraction'>37/49</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.06% </span>
+                <span class="strong">75.51% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/49</span>
+                <span class='fraction'>37/49</span>
             </div>
         
             
@@ -121,40 +121,40 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -169,9 +169,9 @@ import accountModel, {IAccountModel} from "./accountModel";
 <span class="cstat-no" title="statement not covered" >    return accountModel.findAll&lt;IAccountModel&gt;();</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
-function findByEmail(emailFilter: string){
-    return accountModel.findOne&lt;IAccountModel&gt;({where: {email: emailFilter}});
-};
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function findByEmail(emailFilter: string){</span></span>
+<span class="cstat-no" title="statement not covered" >    return accountModel.findOne&lt;IAccountModel&gt;({where: {email: emailFilter}});</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function findById(id: number){</span></span>
 <span class="cstat-no" title="statement not covered" >    return accountModel.findByPk&lt;IAccountModel&gt;(id);</span>
@@ -181,20 +181,20 @@ function add(account: IAccount){
     return accountModel.create(account);
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async function set(id: number, account: IAccount){</span></span>
-<span class="cstat-no" title="statement not covered" >    const originalAccount = await accountModel.findByPk&lt;IAccountModel&gt;(id);</span>
-<span class="cstat-no" title="statement not covered" >    if(originalAccount !== null){</span>
-<span class="cstat-no" title="statement not covered" >        originalAccount.name = account.name;</span>
-<span class="cstat-no" title="statement not covered" >        originalAccount.domain = account.domain;</span>
-<span class="cstat-no" title="statement not covered" >        originalAccount.status = account.status;</span>
-<span class="cstat-no" title="statement not covered" >        if(account.password){</span>
-<span class="cstat-no" title="statement not covered" >            originalAccount.password = account.password;</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        await originalAccount.save();</span>
-<span class="cstat-no" title="statement not covered" >        return originalAccount;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >    throw new Error(`Account not found.`);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+async function set(id: number, account: IAccount){
+    const originalAccount = await accountModel.findByPk&lt;IAccountModel&gt;(id);
+    if(originalAccount !== null){
+        originalAccount.name = account.name;
+        originalAccount.domain = account.domain;
+        originalAccount.status = account.status;
+        if(account.password){
+            originalAccount.password = account.password;
+        }
+        await originalAccount.save();
+        return originalAccount;
+    }
+    throw new Error(`Account not found.`);
+}
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function remove(id: number){</span></span>
 <span class="cstat-no" title="statement not covered" >    return accountModel.destroy({where: {id: id}} as DestroyOptions&lt;IAccount&gt;);</span>
@@ -214,7 +214,7 @@ export default {findAll, findById, findByEmail, add, set, remove, removeByEmail}
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-03T03:29:59.298Z
+                at 2023-11-03T06:41:59.076Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
