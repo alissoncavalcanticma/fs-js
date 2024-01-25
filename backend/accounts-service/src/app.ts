@@ -6,7 +6,7 @@ import accountsRouter from './routes/accounts';
 //Instanciando o express
 const app = express();
 
-//Definindo o user do helmet
+//Definindo o uso do helmet para segurança dos headers
 app.use(helmet());
 //Definindo o tratamento do body da req para JSON com body-parser
 app.use(bodyParser.json());
