@@ -28,6 +28,7 @@ function validateAccountSchema(req: Request, res: Response, next: any){
 }
 
 function validateUpdateAccountSchema(req: Request, res: Response, next: any){
+    //retornando o response de validateSchema
     return validateSchema(accountUpdateSchema, req, res, next);
 }
 

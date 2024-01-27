@@ -3,12 +3,8 @@ import database from '../db';
 //import Account Interface
 import { IAccount } from './account';
 
-//define Interface Optional Creation Attributes in the Model
+//define Interface Optional Creation Attributes in the Model for set the id as optional attribute (for insert new accounts)
 interface IAccountCreationAttributes extends Optional<IAccount, "id">{};
-
-
-//export interface AccountModel
-export interface IAccountModel extends Model<IAccount, IAccountCreationAttributes>, IAccount{};
 
 
 //Model de criação das tabelas do DB usando conceito de Generics <AccountModel>
@@ -44,3 +40,6 @@ export default database.define<IAccountModel>('account', {
     }
 
 });
+
+//export interface AccountModel
+export interface IAccountModel extends Model<IAccount, IAccountCreationAttributes>, IAccount{};
