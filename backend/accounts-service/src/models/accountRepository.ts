@@ -1,6 +1,18 @@
+/*
+
+accountRepository
+
+
+
+
+*/
+
+
 //import DestryOption for Sequelize (lib for use delete function)
 import { DestroyOptions } from "sequelize";
+//missing for define model of data 
 import { IAccount } from "./account";
+//missing for attributes definitions
 import accountModel, {IAccountModel} from "./accountModel";
 
 

@@ -71,9 +71,9 @@ describe('Testando rotas do Account', () => {
 
     it('POST /accounts/ - Deve retornar statusCode 422', async () => {
         const payload = {
-            "id": 1,
-            "nome": 'Alisson',
-            "e-mail": 'alisson@alisson.com',
+            id: 1,
+            nome: testName,
+            "e-mail": testEmail
         }
 
         //instancia variável que recebe a chamada do supertest no post accounts do app.ts

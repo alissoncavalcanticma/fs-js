@@ -7,6 +7,13 @@ import repository from '../models/accountRepository';
 
 //import auth for bcrypt
 import auth from '../auth';
+import { Console } from 'console';
+
+const dataHora = () => {
+    const data = new Date();
+    const now = new Date(data.getTime() - data.getTimezoneOffset() * 60000);
+    return now;
+}
 
 
 async function getAccounts(req: Request, res: Response, next: any){
@@ -26,6 +33,7 @@ async function addAccount(req: Request, res: Response, next: any){
         const result = await repository.add(newAccount);
         newAccount.id = result.id;
         newAccount.password = '';
+        console.log(dataHora() + " ## INFO ## - Added Account.");
         res.status(201).json(newAccount);
     }catch(e){
         console.log(e);
@@ -36,7 +44,7 @@ async function addAccount(req: Request, res: Response, next: any){
 async function getAccount(req: Request, res: Response, next: any){
     try{
         const id = parseInt(req.params.id);
-        if(!id) throw new Error ("ID is invalid format");
+        if(!id) throw new Error (dataHora() + " ## ERROR ## - ID is invalid format");
         
         const account = await repository.findById(id);
         if(account === null){
@@ -55,7 +63,7 @@ async function setAccount(req: Request, res: Response, next: any){
     try{
         const accountId = parseInt(req.params.id);
         if(!accountId){
-            throw new Error('Id is in invalid format.');
+            throw new Error(dataHora() + ' ## ERROR ## - Id is in invalid format.');
             //res.status(400).end(0);
         } 
 
@@ -64,6 +72,7 @@ async function setAccount(req: Request, res: Response, next: any){
         const updatedAccount = await repository.set(accountId, accountParams);
         updatedAccount.password = '';
 
+        console.log(dataHora() + ' ## INFO ## - Update account successfuly.')
         res.status(200).json(updatedAccount);
 
     }catch(e){
@@ -81,8 +90,14 @@ async function loginAccount(req: Request, res: Response, next: any){
             const isValid = auth.comparePassword(loginParams.password, account.password);
             if(isValid){
                 const token = await auth.sign(account.id!);
+                console.log(dataHora(), " ## INFO ## - Login true, generated token.");
                 res.json({auth: true, token});
+            }else{
+                console.log(dataHora(), " ## ALERT ## - Password is not valid!");
+                return res.status(402).end();
             }
+        }else{
+            console.log(dataHora(), " ## ALERT ## - Account not exist, verify your e-mail!");
         }
         
         return res.status(401).end();
