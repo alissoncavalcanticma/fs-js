@@ -89,10 +89,10 @@ describe('Testando rotas do Account', () => {
 
     it('PATCH /accounts/:id - Deve retornar statusCode 200', async () => {
         const payload = {
-            name: 'Alisson',
-            password: '245234',
+            name: testName,
+            password: testPassword,
             status: 100,
-            domain: 'jest.com'
+            domain: testDomain
         }
 
         //instancia variável que recebe a chamada do supertest no post accounts do app.ts
@@ -110,10 +110,10 @@ describe('Testando rotas do Account', () => {
 
     it('PATCH /accounts/:id - Deve retornar statusCode 400', async () => {
         const payload = {
-            name: 'Alisson',
-            password: '245234',
+            name: testName,
+            password: testPassword,
             status: 102,
-            domain: 'gmail'
+            domain: testDomain
         }
 
         //instancia variável que recebe a chamada do supertest no post accounts do app.ts
@@ -130,10 +130,10 @@ describe('Testando rotas do Account', () => {
 
     it('PATCH /accounts/:id - Deve retornar statusCode 400', async () => {
         const payload = {
-            name: 'Alisson',
-            password: '245234',
+            name: testName,
+            password: testPassword,
             status: 100,
-            domain: 'gmail.com'
+            domain: testDomain
         }
 
         //instancia variável que recebe a chamada do supertest no post accounts do app.ts
@@ -145,16 +145,10 @@ describe('Testando rotas do Account', () => {
         expect(resultado.status).toEqual(400);
     });
 
-
-
-
-/* 
-
-
-
     it('GET /accounts/ - Deve retornar statusCode 200', async () => {
         const resultado = await supertest(app)
-                .get('/accounts');
+                .get('/accounts')
+                .set('x-access-token', jwt);
 
         expect(resultado.status).toEqual(200);
         expect(Array.isArray(resultado.body)).toBeTruthy();
@@ -162,25 +156,29 @@ describe('Testando rotas do Account', () => {
 
     it('GET /accounts/:id - Deve retornar statusCode 200', async () => {
         const resultado = await supertest(app)
-                .get('/accounts/1');
+                .get('/accounts/'+result.id)
+                .set('x-access-token', jwt);
 
         expect(resultado.status).toEqual(200);
-        expect(resultado.body.id).toBe(1);
+        expect(resultado.body.id).toBe(result.id);
     })
+
 
     it('GET /accounts/:id - Deve retornar statusCode 404', async () => {
         const resultado = await supertest(app)
-                .get('/accounts/2');
+                .get('/accounts/3330')
+                .set('x-access-token', jwt);
 
         expect(resultado.status).toEqual(404);
     })
 
     it('GET /accounts/:id - Deve retornar statusCode 400', async () => {
         const resultado = await supertest(app)
-                .get('/accounts/string');
+                .get('/accounts/string')
+                .set('x-access-token', jwt);
 
         expect(resultado.status).toEqual(400);
     })
 
-*/
+
 })
