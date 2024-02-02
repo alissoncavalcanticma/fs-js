@@ -10,7 +10,7 @@ import auth from '../src/auth';
 import { randomInt } from 'crypto';
 
 
-//constant's for test
+//constant's for test'
 const testName = 'jestTest';
 const testEmail = 'jestTest@gmail.com';
 const testEmailPost = 'jestTest2@gmail.com';
