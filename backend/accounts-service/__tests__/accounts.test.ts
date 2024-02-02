@@ -128,7 +128,7 @@ describe('Testando rotas do Account', () => {
 
 
 
-    it('PATCH /accounts/:id - Deve retornar statusCode 400', async () => {
+    it('PATCH /accounts/:id - Deve retornar statusCode 404', async () => {
         const payload = {
             name: testName,
             password: testPassword,
@@ -142,8 +142,10 @@ describe('Testando rotas do Account', () => {
             .set('x-access-token', jwt)
             .send(payload)
 
-        expect(resultado.status).toEqual(400);
+        expect(resultado.status).toEqual(404);
     });
+
+
 
     it('GET /accounts/ - Deve retornar statusCode 200', async () => {
         const resultado = await supertest(app)
@@ -156,7 +158,7 @@ describe('Testando rotas do Account', () => {
 
     it('GET /accounts/:id - Deve retornar statusCode 200', async () => {
         const resultado = await supertest(app)
-                .get('/accounts/'+result.id)
+                .get('/accounts/'+ result.id)
                 .set('x-access-token', jwt);
 
         expect(resultado.status).toEqual(200);

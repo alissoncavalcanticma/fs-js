@@ -1,13 +1,3 @@
-/*
-
-accountRepository
-
-
-
-
-*/
-
-
 //import DestryOption for Sequelize (lib for use delete function)
 import { DestroyOptions } from "sequelize";
 //missing for define model of data 
@@ -35,16 +25,23 @@ function add(account: IAccount){
 async function set(id: number, account: IAccount){
     const originalAccount = await accountModel.findByPk<IAccountModel>(id);
     if(originalAccount !== null){
-        originalAccount.name = account.name;
-        originalAccount.domain = account.domain;
-        originalAccount.status = account.status;
+        if(account.name){
+            originalAccount.name = account.name;
+        }
         if(account.password){
             originalAccount.password = account.password;
         }
+        if(account.domain){
+            originalAccount.domain = account.domain;
+        }
+        if(account.status){
+            originalAccount.status = account.status;
+        }
+
         await originalAccount.save();
         return originalAccount;
     }
-    throw new Error(`Account not found.`);
+    return null;
 }
 
 function remove(id: number){

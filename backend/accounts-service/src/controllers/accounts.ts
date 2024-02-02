@@ -68,12 +68,16 @@ async function setAccount(req: Request, res: Response, next: any){
         } 
 
         const accountParams = req.body as IAccount;
+
         accountParams.password = auth.hashPassword(accountParams.password);
         const updatedAccount = await repository.set(accountId, accountParams);
-        updatedAccount.password = '';
-
-        console.log(dataHora() + ' ## INFO ## - Update account successfuly.')
-        res.status(200).json(updatedAccount);
+        if(updatedAccount !== null){
+            updatedAccount.password = '';
+            console.log(dataHora() + ' ## INFO ## - Update account successfuly.')
+            res.status(200).json(updatedAccount);
+        }else{
+            res.status(404).end();
+        }
 
     }catch(e){
         res.status(400).end();
@@ -94,7 +98,7 @@ async function loginAccount(req: Request, res: Response, next: any){
                 res.json({auth: true, token});
             }else{
                 console.log(dataHora(), " ## ALERT ## - Password is not valid!");
-                return res.status(402).end();
+                return res.status(401).end();
             }
         }else{
             console.log(dataHora(), " ## ALERT ## - Account not exist, verify your e-mail!");
