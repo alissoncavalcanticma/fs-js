@@ -182,5 +182,4 @@ describe('Testando rotas do Account', () => {
         expect(resultado.status).toEqual(400);
     })
 
-
 })
