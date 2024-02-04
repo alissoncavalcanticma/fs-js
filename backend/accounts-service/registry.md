@@ -129,13 +129,17 @@ e, se caso foi feito algum import de commons, verificar se na nova compilação 
 
 `./dist/accounts-service/src/server`
 
+e acrescentando "tsc && ts-node" no lugar de "node" no script de inicialização:
+
+`tsc && ts-node`
+
 Ex:
 
 ```
   "scripts": {
     "test": "jest",
-    "start": "node -r dotenv/config -r tsconfig-paths/register ./dist/accounts-service/src/server",
-    "compile": "tsc && node -r dotenv/config -r tsconfig-paths/register ./dist/accounts-service/src/server",
+    "start": "tsc && ts-node -r dotenv/config -r tsconfig-paths/register ./dist/accounts-service/src/server",
+    "compile": "tsc && ts-node -r dotenv/config -r tsconfig-paths/register ./dist/accounts-service/src/server",
     "dev": "nodemon -e ts,json --ignore dist --exec \" npm run compile\""
   },
 ```
