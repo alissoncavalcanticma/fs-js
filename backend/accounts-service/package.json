@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "node -r dotenv/config ./dist/server",
-    "compile": "tsc && node -r dotenv/config ./dist/server",
+    "start": "node -r dotenv/config -r tsconfig-paths/register ./dist/accounts-service/src/server",
+    "compile": "tsc && node -r dotenv/config -r tsconfig-paths/register ./dist/accounts-service/src/server",
     "dev": "nodemon -e ts,json --ignore dist --exec \" npm run compile\""
   },
   "keywords": [],
@@ -22,7 +22,9 @@
     "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.2",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.5",
