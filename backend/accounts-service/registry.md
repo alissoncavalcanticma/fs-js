@@ -143,3 +143,10 @@ Ex:
     "dev": "nodemon -e ts,json --ignore dist --exec \" npm run compile\""
   },
 ```
+
+<br><br>======================================================================
+#### Como inializar typescript quando o tsc --init não funcionar:
+
+Install the typescript package globally by running npm install typescript@latest -g 
+or 
+use the npx command with the --package flag, e.g. npx --package typescript tsc --init.

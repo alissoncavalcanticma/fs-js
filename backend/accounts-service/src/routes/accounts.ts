@@ -2,7 +2,7 @@ import { Router } from "express";
 import accountsController from "../controllers/accounts";
 import { validateLoginSchema, validateAccountSchema, validateUpdateAccountSchema, validateAuth } from "./middlewares";
 
-//import test __commons__
+//import __commons__
 import calc from 'ms-commons/calc';
 
 const router = Router();
