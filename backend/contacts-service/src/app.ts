@@ -1,6 +1,6 @@
 import app from 'ms-commons/api/app';
-import accountsRouter from './routes/accounts';
+import contactsRouter from './routes/contacts';
 
 //Toda implementação realizada no __commons__
 
-export default app(accountsRouter);
+export default app(contactsRouter);
