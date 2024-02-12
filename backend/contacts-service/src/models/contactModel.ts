@@ -8,7 +8,7 @@ interface IContactCreationAttributes extends Optional<IContact, "id">{}
 //export de interface que cruza os types definidos em IContact com a interface Optional
 export interface IContactModel extends Model<IContact, IContactCreationAttributes>, IContact {}
 
-export default database.define<IContactModel>('contac', {
+export default database.define<IContactModel>('contact', {
     id:{
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
