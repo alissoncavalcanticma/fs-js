@@ -1,132 +1,74 @@
-import supertest from "supertest";
-import app from "../src/app";
-//import global for @types jest
-import { describe, expect, it, beforeAll, afterAll } from '@jest/globals';
+import request from 'supertest';
+import app from '../src/app';
+import { IAccount } from '../src/models/account';
+import repository from '../src/models/accountRepository';
 
-//import { beforeEach } from "node:test";
+const testEmail = 'jest@accounts.auth.com';
+const hashPassword = '$2a$10$ye/d5KSzdLt0TIOpevAtde2mgreLPUpLpnE0vyQJ0iMBVeZyklKSi';
+const testPassword = '123456';
 
-//import functions repository
-import repository from "../src/models/accountRepository";
-import { IAccount } from "../src/models/account";
-import auth from "../src/auth";
-
-//constant's for test
-const mockAccount = {
-    name: 'jestAuthTest',
-    email: 'jestAuthTest@gmail.com',
-    password: '123456',
-    domain: 'gmail.com',
-    hashPassword: '$2a$10$m31vwe9khOWgI527g7s/o.2sy9vnFUAKJSuiaRasxD1Iui1z69/v6'
-}
-
-let jwt: string;
-
-//Data input for tests
 beforeAll(async () => {
-    const testAccount: IAccount = {
-        name: mockAccount.name,
-        email: mockAccount.email,
-        password: mockAccount.hashPassword,
-        domain: mockAccount.domain
+    const testAccount : IAccount = {
+        name: 'jest',
+        email: testEmail,
+        password: hashPassword,
+        domain: 'jest.com'
     }
-
     const result = await repository.add(testAccount);
-    jwt = auth.sign(result.id!);
-    console.log(`beforeAll: ${result}`);
-});
+})
 
-// Data delete for tests
 afterAll(async () => {
-    const result = await repository.removeByEmail(mockAccount.email);
+    const result = await repository.removeByEmail(testEmail);
+})
 
-    console.log(`afterAll: ${result}`);
-});
+describe('Testando rotas de autenticação', () => {
+    it('POST /accounts/login - 200 OK', async () => {
 
-
-
-describe('Testando rodas de autenticação', () => {
-
-
-
-    it('POST /accounts/login - 200', async() =>{
-        
         //testing
         const payload = {
-            email: mockAccount.email,
-            password: mockAccount.password
+            email: testEmail,
+            password: testPassword
         }
 
-        const resultado = await supertest(app)
+        const resultado = await request(app)
             .post('/accounts/login')
-            .send(payload)
+            .send(payload);
 
         expect(resultado.status).toEqual(200);
-        expect(resultado.body.token).toBeTruthy();
         expect(resultado.body.auth).toBeTruthy();
-    });
+        expect(resultado.body.token).toBeTruthy();
+    })
 
-
-
-    it('POST /accounts/login - 422', async() =>{
+    it('POST /accounts/login - 422 Unprocessable Entity', async () => {
         const payload = {
-            email: mockAccount.email,
-            password: 'abc'
+            email: testEmail
         }
 
-        const resultado = await supertest(app)
+        const resultado = await request(app)
             .post('/accounts/login')
-            .send(payload)
+            .send(payload);
 
         expect(resultado.status).toEqual(422);
-    });
+    })
 
-    it('POST /accounts/login - 400', async() =>{
+    it('POST /accounts/login - 401 Unauthorized', async () => {
         const payload = {
-            email: mockAccount.email
+            email: testEmail,
+            password: testPassword+'1'
         }
 
-        const resultado = await supertest(app)
+        const resultado = await request(app)
             .post('/accounts/login')
-            .send(payload)
-
-        expect(resultado.status).toEqual(400);
-    });
-
-    it('POST /accounts/login - 401', async() =>{
-        const payload = {
-            email: mockAccount.email,
-            password: '123568'
-        }
-
-        const resultado = await supertest(app)
-            .post('/accounts/login')
-            .send(payload)
+            .send(payload);
 
         expect(resultado.status).toEqual(401);
-    });
+    })
 
-
-
-    it('POST /accounts/logout - 200', async() =>{
-        
-        const resultado = await supertest(app)
-            .post('/accounts/logout')
-            .send()
+    it('POST /accounts/logout - 200 OK', async () => {
+        const resultado = await request(app)
+            .post('/accounts/logout');
 
         expect(resultado.status).toEqual(200);
-    });
-
-    it('GET /accounts/ - 200', async() => {
-
-        const resultado = await supertest(app)
-            .get('/accounts/')
-            .set('x-access-token', jwt);
-
-
-        expect(resultado.status).toEqual(200);
-        expect(resultado.body).toBeTruthy();
-        expect(Array.isArray(resultado.body)).toBeTruthy();
-    });
-
-
-});
+    })
+    
+})

@@ -1,7 +1,6 @@
 import {Request, Response} from 'express';
 import Joi from 'joi';
 import auth from '../auth';
-import {accountSchema, loginSchema, accountUpdateSchema} from '../models/accountSchemas';
 
 function validateSchema(schema : Joi.ObjectSchema<any>, req: Request, res: Response, next: any){
     const {error} = schema.validate(req.body);
@@ -12,18 +11,6 @@ function validateSchema(schema : Joi.ObjectSchema<any>, req: Request, res: Respo
 
     console.log(`validateSchema: ${message}`);
     res.status(422).end();
-}
-
-function validateAccountSchema(req: Request, res: Response, next: any){
-    return validateSchema(accountSchema, req, res, next);
-}
-
-function validateUpdateAccountSchema(req: Request, res: Response, next: any){
-    return validateSchema(accountUpdateSchema, req, res, next);
-}
-
-function validateLoginSchema(req: Request, res: Response, next: any){
-    return validateSchema(loginSchema, req, res, next);
 }
 
 async function validateAuth(req: Request, res: Response, next: any){
@@ -44,4 +31,4 @@ async function validateAuth(req: Request, res: Response, next: any){
     }
 }
 
-export {validateAccountSchema, validateLoginSchema, validateUpdateAccountSchema, validateAuth}
+export default {validateAuth, validateSchema}

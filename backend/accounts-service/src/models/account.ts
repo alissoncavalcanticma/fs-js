@@ -1,11 +1,10 @@
-//import enum accountStatus
-import { AccountStatus } from "./accountStatus";
+import { AccountStatus } from './accountStatus';
 
-export interface IAccount{
-    id?: number,
-    name: string,
-    email: string,
-    password: string,
-    status?: AccountStatus,
-    domain: string
+export interface IAccount {
+        id?: number,
+        name: string,
+        email: string,
+        password: string,
+        status?: AccountStatus,
+        domain: string
 }

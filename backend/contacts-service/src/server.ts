@@ -1,21 +1,18 @@
-import app from "./app";
+import app from './app'
 import database from 'ms-commons/data/db';
 
-(async() => {
-    try{
+(async () => {
 
-        //obtendo as variáveis de ambiente
-        const {PORT, DB_NAME} = process.env;
+  try {
+    const port = parseInt(`${process.env.PORT}`);
 
-        //iniciando conexão ao database com sincronismo dos modelos
-        await database.sync();
-        console.log(`## INFO ## - Running Database ${DB_NAME}`);
+    await database.sync();
+    console.log(`Running database ${process.env.DB_NAME}`);
 
-        // Startando o server
-        await app.listen(PORT);
-        console.log(`## INFO ## - Start Server in port ${PORT}`);
+    await app.listen(port);
+    console.log(`Running on port ${port}`);
 
-    }catch(e){
-        console.log(e);
-    }
+  } catch (error) {
+    console.log(`${error}`);
+  }
 })();

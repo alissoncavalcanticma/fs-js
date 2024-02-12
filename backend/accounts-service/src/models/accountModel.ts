@@ -1,20 +1,18 @@
-import Sequelize, { Model, Optional } from 'sequelize';
+import Sequelize, {Model, Optional} from 'sequelize';
 import database from '../db';
-//import Account Interface
-import { IAccount } from './account';
+//import database from 'ms-commons/data/db';
+import {IAccount} from './account';
 
-//define Interface Optional Creation Attributes in the Model for set the id as optional attribute (for insert new accounts)
-interface IAccountCreationAttributes extends Optional<IAccount, "id">{};
+interface IAccountCreationAttributes extends Optional<IAccount, "id">{}
 
+export interface IAccountModel extends Model<IAccount, IAccountCreationAttributes>, IAccount{}
 
-//Model de criação das tabelas do DB usando conceito de Generics <AccountModel>
 export default database.define<IAccountModel>('account', {
     id: {
-        //UNISGNED = Sem sinal (+/-)
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false 
+        allowNull: false
     },
     name: {
         type: Sequelize.STRING(150),
@@ -27,7 +25,7 @@ export default database.define<IAccountModel>('account', {
     },
     password: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: false,
     },
     status: {
         type: Sequelize.SMALLINT.UNSIGNED,
@@ -38,8 +36,4 @@ export default database.define<IAccountModel>('account', {
         type: Sequelize.STRING(100),
         allowNull: false
     }
-
-});
-
-//export interface AccountModel
-export interface IAccountModel extends Model<IAccount, IAccountCreationAttributes>, IAccount{};
+})
