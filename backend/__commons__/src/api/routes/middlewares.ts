@@ -1,8 +1,8 @@
 import {Request, Response} from 'express';
-import Joi from 'joi';
+import Joi, { ObjectSchema } from 'joi';
 import auth from '../auth';
 
-function validateSchema(schema : Joi.ObjectSchema<any>, req: Request, res: Response, next: any){
+function validateSchema(schema : ObjectSchema, req: Request, res: Response, next: any){
     const {error} = schema.validate(req.body);
     if(error == null) return next();
 
