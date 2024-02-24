@@ -82,10 +82,13 @@ module.exports = {
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
     //moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/'}),
     moduleNameMapper: {
+        '^ms-commons/(.*)$': '<rootDir>/../__commons__/src/$1', //$1 faz referência ao mesmo caminho setado no nome do caminho (.*)$
+        /*
         '^ms-commons/api/app': '<rootDir>/../__commons__/src/api/app',
         '^ms-commons/data/db': '<rootDir>/../__commons__/src/data/db',
         '^ms-commons/api/auth': '<rootDir>/../__commons__/src/api/auth',
         '^ms-commons/api/routes/middlewares': '<rootDir>/../__commons__/src/api/routes/middlewares',
+        */
     },
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
     // modulePathIgnorePatterns: [],
