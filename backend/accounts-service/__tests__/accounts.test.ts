@@ -1,8 +1,11 @@
-import request from 'supertest'
+import request from 'supertest';
 import app from './../src/app'
 import { IAccount } from '../src/models/account';
 import repository from '../src/models/accountRepository';
 import auth from '../src/auth';
+//import global @types for the use before and after functions
+import { jest, describe, expect, it, beforeAll, afterAll } from '@jest/globals';
+//import '@types/jest';
 
 const testEmail = 'jest@accounts.com';
 const testEmail2 = 'jest2@accounts.com';

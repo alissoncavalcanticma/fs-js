@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.65% </span>
+                <span class="strong">88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>52/58</span>
+                <span class='fraction'>44/50</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.65% </span>
+                <span class="strong">88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>52/58</span>
+                <span class='fraction'>44/50</span>
             </div>
         
             
@@ -112,19 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -165,7 +153,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -174,24 +161,17 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">//import DestryOption for Sequelize (lib for use delete function)
-import { DestroyOptions } from "sequelize";
-//missing for define model of data 
-import { IAccount } from "./account";
-//missing for attributes definitions
-import accountModel, {IAccountModel} from "./accountModel";
-&nbsp;
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import accountModel, {IAccountModel} from './accountModel';
+import {IAccount} from './account';
+import {DestroyOptions} from 'sequelize';
 &nbsp;
 function findAll(){
     return accountModel.findAll&lt;IAccountModel&gt;();
-};
+}
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function findByEmail(emailFilter: string){</span></span>
-<span class="cstat-no" title="statement not covered" >    return accountModel.findOne&lt;IAccountModel&gt;({where: {email: emailFilter}});</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" >    return accountModel.findOne&lt;IAccountModel&gt;({where: { email: emailFilter }});</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 function findById(id: number){
     return accountModel.findByPk&lt;IAccountModel&gt;(id);
@@ -204,18 +184,17 @@ function add(account: IAccount){
 async function set(id: number, account: IAccount){
     const originalAccount = await accountModel.findByPk&lt;IAccountModel&gt;(id);
     if(originalAccount !== null){
-        if(account.name){
+        if(account.name)
             originalAccount.name = account.name;
-        }
-        if(account.password){
-            originalAccount.password = account.password;
-        }
-        if(account.domain){
-            originalAccount.domain = account.domain;
-        }
-        if(account.status){
-            originalAccount.status = account.status;
-        }
+&nbsp;
+        if(account.domain)
+<span class="branch-0 cbranch-no" title="branch not covered" >            originalAccount.domain = account.domain;</span>
+&nbsp;
+        if(account.status)
+<span class="branch-0 cbranch-no" title="branch not covered" >            originalAccount.status = account.status;</span>
+&nbsp;
+        if(account.password) 
+<span class="branch-0 cbranch-no" title="branch not covered" >            originalAccount.password = account.password;</span>
 &nbsp;
         await originalAccount.save();
         return originalAccount;
@@ -224,24 +203,21 @@ async function set(id: number, account: IAccount){
 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function remove(id: number){</span></span>
-<span class="cstat-no" title="statement not covered" >    return accountModel.destroy({where: {id: id}} as DestroyOptions&lt;IAccount&gt;);</span>
+<span class="cstat-no" title="statement not covered" >    return accountModel.destroy({ where: {id: id} } as DestroyOptions&lt;IAccount&gt;)</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 function removeByEmail(email: string){
-    return accountModel.destroy({where: {email: email}} as DestroyOptions&lt;IAccount&gt;);
+    return accountModel.destroy({ where: {email: email} } as DestroyOptions&lt;IAccount&gt;)
 }
 &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-export default {findAll, findById, findByEmail, add, set, remove, removeByEmail};</pre></td></tr></table></pre>
+export default { findAll, findById, add, set, findByEmail, remove, removeByEmail }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-02T02:42:04.011Z
+                at 2024-02-24T05:18:14.039Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
