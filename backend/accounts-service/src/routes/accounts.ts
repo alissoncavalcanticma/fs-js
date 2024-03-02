@@ -15,6 +15,8 @@ router.post('/accounts/', validateAccountSchema, accountsController.addAccount);
 
 router.post('/accounts/login', validateLoginSchema, accountsController.loginAccount);
 
-router.post('/accounts/logout', accountsController.logoutAccount);
+router.post('/accounts/logout', validateAuth, accountsController.logoutAccount);
+
+router.delete('/accounts/:id', validateAuth, accountsController.deleteAccount);
 
 export default router;

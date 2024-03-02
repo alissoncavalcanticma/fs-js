@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { IAccount } from '../models/account';
 import repository from '../models/accountRepository';
 import auth from '../auth';
+import controllerCommons from 'ms-commons/controllers/controller';
+import { Token } from 'ms-commons/api/auth';
 
 
 async function getAccounts(req: Request, res: Response, next: any) {
@@ -16,6 +18,9 @@ async function getAccount(req: Request, res: Response, next: any) {
     try {
         const id = parseInt(req.params.id);
         if (!id) return res.status(400).end();
+
+        const token = controllerCommons.getToken(res) as Token;
+        if(accountId !== token.accountId) return res.status(403).end();
 
         const account = await repository.findById(id);
         if (account === null) {
@@ -52,6 +57,9 @@ async function setAccount(req: Request, res: Response, next: any) {
     try {
         const accountId = parseInt(req.params.id);
         if (!accountId) return res.status(400).end();
+
+        const token = controllerCommons.getToken(res) as Token;
+        if(accountId !== token.accountId) return res.status(403).end();
 
         const accountParams = req.body as IAccount;
         
@@ -96,4 +104,21 @@ function logoutAccount(req: Request, res: Response, next: any) {
     res.json({ auth: false, token: null });
 }
 
-export default { getAccounts, addAccount, getAccount, setAccount, loginAccount, logoutAccount }
+async function deleteAccount(req: Request, res: Response, next: any){
+    try{
+    
+        const accountId = parseInt(req.params.id);
+        if(!accountId) return res.status(400).end();
+
+        const token = controllerCommons.getToken(res) as Token;
+        if(accountId !== token.accountId) return res.status(403).end();
+
+        await repository.remove(accountId);
+        res.status(200).end();
+    }catch(e){
+        console.log(`deleteAccount: ${e}`);
+        res.status(400).end();
+    }
+}
+
+export default { getAccounts, addAccount, getAccount, setAccount, loginAccount, logoutAccount, deleteAccount }
