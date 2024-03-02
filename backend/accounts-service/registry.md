@@ -95,6 +95,7 @@ Execute Jest Test:
 
 
 <br><br>===========================
+
 ### Configurações de import de módulos (EX: "__commons__") que foram realizadas:
 
 Inclusão de 2 novos pacotes:
@@ -150,3 +151,26 @@ Ex:
 Install the typescript package globally by running npm install typescript@latest -g 
 or 
 use the npx command with the --package flag, e.g. npx --package typescript tsc --init.
+
+#### Ajustes de import do "__commoms__" para o Jest:
+
+Foi necessário utilizar o pacote `tsconfig-paths-jest`:
+
+`npm i -D tsconfig-paths-jest`
+
+e mapear o repositório no arquivo `jest.config.js`, conforme abaixo:
+
+
+```
+moduleNameMapper: {
+        /* mapeamento de ms-commons */
+        '^ms-commons/(.*)$': '<rootDir>/../__commons__/src/$1', //$1 faz referência ao mesmo caminho setado no nome do caminho (.*)$
+        
+        /* Exemplos
+            '^ms-commons/api/app': '<rootDir>/../__commons__/src/api/app',
+            '^ms-commons/data/db': '<rootDir>/../__commons__/src/data/db',
+            '^ms-commons/api/auth': '<rootDir>/../__commons__/src/api/auth',
+            '^ms-commons/api/routes/middlewares': '<rootDir>/../__commons__/src/api/routes/middlewares',
+        */
+    }
+```

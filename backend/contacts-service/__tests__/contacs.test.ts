@@ -3,7 +3,7 @@ import app from './../src/app'
 import accountApp from '../../accounts-service/src/app';
 import { IContact } from '../src/models/contact';
 import repository from '../src/models/contactRepository';
-//import global @types for the use before and after functions
+//import global jest types for the use functions of Jest
 import { jest, describe, expect, it, beforeAll, afterAll } from '@jest/globals';
 //import '@types/jest';
 
@@ -28,7 +28,6 @@ beforeAll(async () => {
     testAccountId = account.body.id;
 
     //Autenticando conta
-
     const result = await request(accountApp)
         .post('/accounts/login')
         .send({
