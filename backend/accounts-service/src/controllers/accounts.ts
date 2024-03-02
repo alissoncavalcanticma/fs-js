@@ -20,7 +20,7 @@ async function getAccount(req: Request, res: Response, next: any) {
         if (!id) return res.status(400).end();
 
         const token = controllerCommons.getToken(res) as Token;
-        if(accountId !== token.accountId) return res.status(403).end();
+        if(id !== token.accountId) return res.status(403).end();
 
         const account = await repository.findById(id);
         if (account === null) {
