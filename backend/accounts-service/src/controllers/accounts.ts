@@ -16,13 +16,13 @@ async function getAccounts(req: Request, res: Response, next: any) {
 
 async function getAccount(req: Request, res: Response, next: any) {
     try {
-        const id = parseInt(req.params.id);
-        if (!id) return res.status(400).end();
+        const accountId = parseInt(req.params.id);
+        if (!accountId) return res.status(400).end();
 
         const token = controllerCommons.getToken(res) as Token;
-        if(id !== token.accountId) return res.status(403).end();
+        if(accountId !== token.accountId) return res.status(403).end();
 
-        const account = await repository.findById(id);
+        const account = await repository.findById(accountId);
         if (account === null) {
             return res.status(404).end();
 
