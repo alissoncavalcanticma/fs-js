@@ -2,7 +2,6 @@ import {Router} from 'express';
 import accountsController from '../controllers/accounts';
 import {validateAccountSchema,validateLoginSchema, validateUpdateAccountSchema, validateAuthentication, validateAuthorization} from './middlewares';
 
-
 const router = Router();
 
 router.get('/accounts/', validateAuthentication, accountsController.getAccounts);
