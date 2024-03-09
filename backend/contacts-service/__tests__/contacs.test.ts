@@ -9,14 +9,14 @@ import { jest, describe, expect, it, beforeAll, afterAll } from '@jest/globals';
 
 const testEmail = 'jest@accounts.com';
 const testEmail2 = 'jest2@accounts.com';
-let jwt : string = '';
-let testAccountId : number = 0;
+let jwt: string = '';
+let testAccountId: number = 0;
 
 beforeAll(async () => {
     const testAccount = {
         name: 'jest',
         email: testEmail,
-        password: 12345,
+        password: '123456',
         domain: 'jest.com'
     }
     
@@ -33,7 +33,11 @@ beforeAll(async () => {
             email: testAccount.email,
             password: testAccount.password
         });
-    
+    //console.log(`loginResponse: ${result.status}`);
+    console.log(`{
+        loginResponse: ${result.status},
+        jwt: ${result.body.token}}`
+      );
     jwt = result.body.token;
 })
 

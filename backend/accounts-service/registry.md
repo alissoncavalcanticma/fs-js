@@ -174,3 +174,17 @@ moduleNameMapper: {
         */
     }
 ```
+
+#### Ajuste de erro de lib do node 18 na execução do Jest
+
+Erro: 
+```
+Error: You must provide the URL of lib/mappings.wasm by calling SourceMapConsumer.initialize({ 'lib/mappings.wasm': ... }) before using SourceMapConsumer
+    at readWasm (C:\Users\alisson.galvao\Documents\ALISSON (PESSOAL)\Cursos e Treinamentos\FullStack\Projects\fs-js\backend\contacts-service\node_modules\v8-to-istanbul\node_modules\source-map\lib\read-wasm.js:8:13)
+
+```
+
+Solução:
+
+- Executar o comando no mesmo terminal do Jest test:
+  `export NODE_OPTIONS=--no-experimental-fetch`
