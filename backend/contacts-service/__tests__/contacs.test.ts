@@ -61,4 +61,22 @@ describe('Testando rotas do Contacts', () => {
     expect(resultado.status).toEqual(200);
     expect(Array.isArray(resultado.body)).toBeTruthy();
   })
+
+  it('GET /contacts/ - Deve retornar statusCode 401', async () => {
+    const resultado = await supertest(app)
+      .get('/contacts/');
+    
+    expect(resultado.status).toEqual(401);
+  })
+
+/*   it('GET /contacts/:id - Deve retornar statusCode 200', async () => {
+    const resultado = await supertest(app)
+      .get('/contacts/1')
+      .set('x-access-token', jwt);
+    
+    expect(resultado.status).toEqual(200);
+    //expect(resultado.body.id).toEqual(testContactId);
+  }) */
+
+
 })
