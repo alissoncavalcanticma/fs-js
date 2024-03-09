@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import commonsController from 'ms-commons/controllers/controller';
 import { Token } from 'ms-commons/api/auth';
-import repository from 'src/models/contactRepository';
+import repository from '../models/contactRepository';
 
 async function getContacts(req: Request, res: Response, next: any){
     const token = commonsController.getToken(res) as Token;
