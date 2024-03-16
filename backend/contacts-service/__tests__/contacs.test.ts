@@ -44,7 +44,7 @@ beforeAll(async () => {
     const testContact = {
       name: 'jest',
       email: testEmail,
-      phone: '5181988998899',
+      phone: '88998899',
     } as IContact;
     const result2 = await repository.add(testContact, testAccountId);
     testContactId = result2.id!;
@@ -52,6 +52,8 @@ beforeAll(async () => {
 
 afterAll(async () => {
   
+    await repository.removeByEmail(testEmail, testAccountId);
+
     await supertest(accountApp)
         .post('/accounts/logout')
         .send();
@@ -81,7 +83,7 @@ describe('Testando rotas do Contacts', () => {
 
   it('GET /contacts/:id - Deve retornar statusCode 200', async () => {
     const resultado = await supertest(app)
-      .get('/contacts/1')
+      .get('/contacts/' + testContactId)
       .set('x-access-token', jwt);
     
     expect(resultado.status).toEqual(200);
