@@ -35,7 +35,7 @@ beforeAll(async () => {
             email: testAccount.email,
             password: testAccount.password
         });
-    //console.log(`loginResponse: ${result.status}`);
+    console.log(`loginResponse: ${result.status}`);
     console.log(`{
         loginResponse: ${result.status},
         jwt: ${result.body.token}}`
@@ -48,6 +48,7 @@ beforeAll(async () => {
       phone: '88998899',
     } as IContact;
     const result2 = await repository.add(testContact, testAccountId);
+    console.log(`testContact: ${result2.status}`);
     testContactId = result2.id!;
 })
 
@@ -55,15 +56,15 @@ afterAll(async () => {
   
     await repository.removeByEmail(testEmail, testAccountId);
 
+    const deleteResponse = await supertest(accountApp)
+    .delete('/accounts/' + testAccountId)
+    .set('x-access-token', jwt);
+    console.log(`deleteResponse: ${deleteResponse.status}`);
+
     const logoutResponse = await supertest(accountApp)
         .post('/accounts/logout')
         .set('x-access-token', jwt);
     console.log(`logoutResponde: ${logoutResponse.status}`);
-
-    const deleteResponse = await supertest(accountApp)
-        .delete('/accounts/' + testAccountId)
-        .set('x-access-token', jwt);
-    console.log(`deleteResponse: ${deleteResponse.status}`);
 })
 
 describe('Testando rotas do Contacts', () => {
@@ -91,6 +92,29 @@ describe('Testando rotas do Contacts', () => {
     
     expect(resultado.status).toEqual(200);
     expect(resultado.body.id).toEqual(testContactId);
+  })
+
+  it('GET /contacts/:id - Deve retornar statusCode 404', async () => {
+    const resultado = await supertest(app)
+      .get('/contacts/-1')
+      .set('x-access-token', jwt);
+    
+    expect(resultado.status).toEqual(404);
+  })
+
+  it('GET /contacts/:id - Deve retornar statusCode 400', async () => {
+    const resultado = await supertest(app)
+      .get('/contacts/abc')
+      .set('x-access-token', jwt);
+    
+    expect(resultado.status).toEqual(400);
+  })
+
+  it('GET /contacts/:id - Deve retornar statusCode 401', async () => {
+    const resultado = await supertest(app)
+      .get('/contacts/abc');
+    
+    expect(resultado.status).toEqual(401);
   })
 
 
