@@ -25,6 +25,7 @@ beforeAll(async () => {
     const account = await supertest(accountApp)
         .post('/accounts/')
         .send(testAccount);
+    console.log(`account: ${account.status}`);
     testAccountId = account.body.id;
 
     //Autenticando conta
@@ -54,13 +55,15 @@ afterAll(async () => {
   
     await repository.removeByEmail(testEmail, testAccountId);
 
-    await supertest(accountApp)
+    const logoutResponse = await supertest(accountApp)
         .post('/accounts/logout')
-        .send();
+        .set('x-access-token', jwt);
+    console.log(`logoutResponde: ${logoutResponse.status}`);
 
-    await supertest(accountApp)
+    const deleteResponse = await supertest(accountApp)
         .delete('/accounts/' + testAccountId)
-        .send();
+        .set('x-access-token', jwt);
+    console.log(`deleteResponse: ${deleteResponse.status}`);
 })
 
 describe('Testando rotas do Contacts', () => {
