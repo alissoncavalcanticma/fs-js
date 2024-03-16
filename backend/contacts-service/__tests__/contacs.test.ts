@@ -11,6 +11,7 @@ const testEmail = 'jest@accounts.com';
 const testEmail2 = 'jest2@accounts.com';
 let jwt: string = '';
 let testAccountId: number = 0;
+let testContactId: number = 0;
 
 beforeAll(async () => {
     const testAccount = {
@@ -39,6 +40,14 @@ beforeAll(async () => {
         jwt: ${result.body.token}}`
       );
     jwt = result.body.token;
+
+    const testContact = {
+      name: 'jest',
+      email: testEmail,
+      phone: '5181988998899',
+    } as IContact;
+    const result2 = await repository.add(testContact, testAccountId);
+    testContactId = result2.id!;
 })
 
 afterAll(async () => {
@@ -69,14 +78,15 @@ describe('Testando rotas do Contacts', () => {
     expect(resultado.status).toEqual(401);
   })
 
-/*   it('GET /contacts/:id - Deve retornar statusCode 200', async () => {
+
+  it('GET /contacts/:id - Deve retornar statusCode 200', async () => {
     const resultado = await supertest(app)
       .get('/contacts/1')
       .set('x-access-token', jwt);
     
     expect(resultado.status).toEqual(200);
-    //expect(resultado.body.id).toEqual(testContactId);
-  }) */
+    expect(resultado.body.id).toEqual(testContactId);
+  })
 
 
 })
