@@ -117,5 +117,21 @@ describe('Testando rotas do Contacts', () => {
     expect(resultado.status).toEqual(401);
   })
 
+  it('POST /contacts/ - Deve retornar statusCode 201', async () => {
+    
+    const testContac = {
+      name: 'jest2',
+      email: testEmail2,
+      phone: '88998899',
+    } as IContact;
+    
+    const resultado = await supertest(app)
+      .post('/contacts/')
+      .set('x-access-token', jwt)
+      .send(testContac);
+    
+    expect(resultado.status).toEqual(201);
+  })
+
 
 })
