@@ -186,5 +186,8 @@ Error: You must provide the URL of lib/mappings.wasm by calling SourceMapConsume
 
 Solução:
 
-- Executar o comando no mesmo terminal do Jest test:
-  `export NODE_OPTIONS=--no-experimental-fetch`
+Utilizar  o nvm (nvm-windows para o caso do windows) para gerenciar versão
+e fazer downgrade da versão do node para 16.20.2
+Base: https://github.com/coreybutler/nvm-windows?tab=readme-ov-file
+
+
