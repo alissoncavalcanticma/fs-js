@@ -54,7 +54,8 @@ beforeAll(async () => {
 
 afterAll(async () => {
   
-    await repository.removeByEmail(testEmail, testAccountId);
+    const removeResult = await repository.removeByEmail(testEmail, testAccountId);
+    const removeResult2 = await repository.removeByEmail(testEmail2, testAccountId);
 
     const deleteResponse = await supertest(accountApp)
     .delete('/accounts/' + testAccountId)
@@ -131,6 +132,7 @@ describe('Testando rotas do Contacts', () => {
       .send(testContac);
     
     expect(resultado.status).toEqual(201);
+    expect(resultado .body.id).toBeTruthy();
   })
 
 
