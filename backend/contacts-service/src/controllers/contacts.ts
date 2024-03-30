@@ -2,6 +2,7 @@ import {Request, Response} from 'express';
 import commonsController from 'ms-commons/controllers/controller';
 import { Token } from 'ms-commons/api/auth';
 import repository from '../models/contactRepository';
+import { IContact } from 'src/models/contact';
 
 
 async function getContact(req: Request, res: Response, next: any){
@@ -31,4 +32,17 @@ async function getContacts(req: Request, res: Response, next: any){
     }
 }
 
-export default {getContact, getContacts}
+async function addContact(req: Request, res: Response, next: any){
+    try{
+        const token = commonsController.getToken(res) as Token;
+        const contact = req.body as IContact;
+        const result = await repository.add(contact, token.accountId);
+
+        res.status(201).json(result);
+    }catch(e){
+        console.log(`Error addContact: ${e}`);
+        res.status(400).end();
+    }
+}
+
+export default {getContact, getContacts, addContact}

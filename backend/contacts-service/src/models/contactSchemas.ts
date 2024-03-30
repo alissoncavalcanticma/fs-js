@@ -16,8 +16,7 @@ const contactSchema = Joi.object({
                 .max(150)
                 .required(),
         phone: Joi.string()
-                .min(10)
-                .max(11),
+                .pattern(/^[0-9]{10,11}$/),
         status: Joi.number()
                 .integer()
                 .min(100)
@@ -30,8 +29,7 @@ const contactUpdateSchema = Joi.object({
         .max(150)
         .required(),
     phone: Joi.string()
-        .min(10)
-        .max(11),
+        .pattern(/^[0-9]{10,11}$/),
     status: Joi.number()
         .integer()
         .min(100)

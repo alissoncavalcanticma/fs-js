@@ -123,7 +123,7 @@ describe('Testando rotas do Contacts', () => {
     const testContac = {
       name: 'jest2',
       email: testEmail2,
-      phone: '88998899',
+      phone: '08188998899',
     } as IContact;
     
     const resultado = await supertest(app)
@@ -133,6 +133,54 @@ describe('Testando rotas do Contacts', () => {
     
     expect(resultado.status).toEqual(201);
     expect(resultado .body.id).toBeTruthy();
+  })
+
+
+  it('POST /contacts/ - Deve retornar statusCode 401', async () => {
+    
+    const testContac = {
+      name: 'jest2.1',
+      email: testEmail2,
+      phone: '08188998',
+    } as IContact;
+    
+    const resultado = await supertest(app)
+      .post('/contacts/')
+      .set('x-access-token', 'ase')
+      .send(testContac);
+    
+    expect(resultado.status).toEqual(401);
+  })
+
+  it('POST /contacts/ - Deve retornar statusCode 422', async () => {
+    
+    const payload = {
+      street: 'jest2.1'
+    };
+    
+    const resultado = await supertest(app)
+      .post('/contacts/')
+      .set('x-access-token', jwt)
+      .send(payload);
+    
+    expect(resultado.status).toEqual(422);
+  })
+
+
+  it('POST /contacts/ - Deve retornar statusCode 400', async () => {
+    
+    const testContac = {
+      name: 'jest2.1',
+      email: testEmail2,
+      phone: '08188998899',
+    } as IContact;
+    
+    const resultado = await supertest(app)
+      .post('/contacts/')
+      .set('x-access-token', jwt)
+      .send(testContac);
+    
+    expect(resultado.status).toEqual(400);
   })
 
 
