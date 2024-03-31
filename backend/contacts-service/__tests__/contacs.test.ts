@@ -68,7 +68,7 @@ afterAll(async () => {
     console.log(`logoutResponde: ${logoutResponse.status}`);
 })
 
-describe('Testando rotas do Contacts', () => {
+describe('Testando rotas do Contacts Service', () => {
   it('GET /contacts/ - Deve retornar statusCode 200', async () => {
     const resultado = await supertest(app)
       .get('/contacts/')
