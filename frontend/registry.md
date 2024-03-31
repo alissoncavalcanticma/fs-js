@@ -6,7 +6,7 @@
 
 ##### Start:
 
-``
+`npm start`
 
 ##### Dependências:
 
