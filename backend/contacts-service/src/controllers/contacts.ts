@@ -45,4 +45,15 @@ async function addContact(req: Request, res: Response, next: any){
     }
 }
 
+async function setContact(req: Request, res: Response, next: any){
+    try{
+        const token = commonsController.getToken(res) as Token;
+        const contact = req.body as IContact;
+        const result = await repository.set(contact, token.accountId);
+    }catch(e){
+        console.log(`Error setContact: ${e}`);
+        res.status(400).end();
+    }
+}
+
 export default {getContact, getContacts, addContact}
