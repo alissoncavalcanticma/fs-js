@@ -47,9 +47,14 @@ async function addContact(req: Request, res: Response, next: any){
 
 async function setContact(req: Request, res: Response, next: any){
     try{
+        const contactId = parseInt(req.params.id);
+        if(!contactId) res.status(400).end();
+        
         const token = commonsController.getToken(res) as Token;
         const contact = req.body as IContact;
-        const result = await repository.set(contact, token.accountId);
+        
+        const result = await repository.set(contactId, contact, token.accountId);
+        if(!result) return res.status(404).end();
 
         res.json(result);
     }catch(e){

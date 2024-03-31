@@ -229,7 +229,7 @@ describe('Testando rotas do Contacts Service', () => {
   it('PATCH /contacts/:id - Deve retornar statusCode 404', async () => {
     
     const payload = {
-      street: 'jest4.1'
+      name: 'jest4.1'
     };
     
     const resultado = await supertest(app)
@@ -238,6 +238,20 @@ describe('Testando rotas do Contacts Service', () => {
       .send(payload);
     
     expect(resultado.status).toEqual(404);
+  })
+
+  it('PATCH /contacts/:id - Deve retornar statusCode 400', async () => {
+    
+    const payload = {
+      name: 'jest4.1'
+    };
+    
+    const resultado = await supertest(app)
+      .patch('/contacts/abc')
+      .set('x-access-token', jwt)
+      .send(payload);
+    
+    expect(resultado.status).toEqual(400);
   })
 
 })

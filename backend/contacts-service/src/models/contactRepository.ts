@@ -38,4 +38,4 @@ async function set(contactId: number, contact: IContact, accountId:number){
     return contact;
 }
 
-export default { findAll, findById, add, removeById, removeByEmail};
+export default { findAll, findById, add, removeById, removeByEmail, set};
