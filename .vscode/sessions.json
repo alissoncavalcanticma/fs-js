@@ -9,22 +9,47 @@
     "default": [
       [
         {
-          "name": "Main",
-          "icon": "notebook-execute",
+          "name": "Accounts",
+          "icon": "account",
           "autoExecuteCommands": true,
           "commands": [
-            "cd src/",
-            "npm run start-dev"
+            "cd backend/accounts-service/ && npm run dev"
           ]
         },
         {
-          "name": "Git",
-          "icon": "github",
+          "name": "Accounts test",
+          "icon": "test-view-icon",
+          "autoExecuteCommands": true,
           "commands": [
-            ""
+            "cd backend/accounts-service/ && npm run test"
           ]
         }
       ],
+      [
+        {
+          "name": "Contacts",
+          "icon": "notebook",
+          "autoExecuteCommands": true,
+          "commands": [
+            "cd backend/contacts-service/ && npm run dev"
+          ]
+        },
+        {
+          "name": "Contacts test",
+          "icon": "test-view-icon",
+          "autoExecuteCommands": true,
+          "commands": [
+            "cd backend/contacts-service/ && npm run test"
+          ]
+        }
+      ],
+      {
+        "name": "Git",
+        "icon": "github",
+        "commands": [
+          ""
+        ]
+      },
       {
         "name": "Others",
         "icon": "debug-line-by-line",
