@@ -25,4 +25,17 @@ function removeByEmail(email: string, accountId: number){
     return contactModel.destroy({where: {email: email, accountId: accountId}}) as DestroyOptions<IContact>;
 }
 
+async function set(contactId: number, contact: IContact, accountId:number){
+    const originalContact = await contactModel.findOne({where:{id: contactId, accountId: accountId}});
+    if(originalContact === null) return null;
+
+    if(contact.name) originalContact.name = contact.name;
+    if(contact.phone) originalContact.phone = contact.phone;
+    if(contact.status) originalContact.status = contact.status;
+
+    const result = await originalContact.save();
+    contact.id = result.id;
+    return contact;
+}
+
 export default { findAll, findById, add, removeById, removeByEmail};
