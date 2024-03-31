@@ -1,62 +1,68 @@
 {
-  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
-  "theme": "tribe",
-  "active": "default",
-  "activateOnStartup": true,
-  "keepExistingTerminals": false,
-  "noClear": true,
-  "sessions": {
-    "default": [
-      [
-        {
-          "name": "Accounts",
-          "icon": "account",
-          "autoExecuteCommands": true,
-          "commands": [
-            "cd backend/accounts-service/ && npm run dev"
-          ]
-        },
-        {
-          "name": "Accounts test",
-          "icon": "test-view-icon",
-          "autoExecuteCommands": true,
-          "commands": [
-            "cd backend/accounts-service/ && npm run test"
-          ]
-        }
-      ],
-      [
-        {
-          "name": "Contacts",
-          "icon": "notebook",
-          "autoExecuteCommands": true,
-          "commands": [
-            "cd backend/contacts-service/ && npm run dev"
-          ]
-        },
-        {
-          "name": "Contacts test",
-          "icon": "test-view-icon",
-          "autoExecuteCommands": true,
-          "commands": [
-            "cd backend/contacts-service/ && npm run test"
-          ]
-        }
-      ],
-      {
-        "name": "Git",
-        "icon": "github",
-        "commands": [
-          ""
+    "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
+    "theme": "tribe",
+    "active": "default",
+    "activateOnStartup": true,
+    "keepExistingTerminals": false,
+    "noClear": true,
+    "sessions": {
+        "default": [
+            [{
+                    "name": "Accounts",
+                    "icon": "account",
+                    "autoExecuteCommands": true,
+                    "commands": [
+                        "cd backend/accounts-service/ && npm run dev"
+                    ]
+                },
+                {
+                    "name": "Accounts test",
+                    "icon": "test-view-icon",
+                    "autoExecuteCommands": true,
+                    "commands": [
+                        "cd backend/accounts-service/ && npm run test"
+                    ]
+                }
+            ],
+            [{
+                    "name": "Contacts",
+                    "icon": "notebook",
+                    "autoExecuteCommands": true,
+                    "commands": [
+                        "cd backend/contacts-service/ && npm run dev"
+                    ]
+                },
+                {
+                    "name": "Contacts test",
+                    "icon": "test-view-icon",
+                    "autoExecuteCommands": true,
+                    "commands": [
+                        "cd backend/contacts-service/ && npm run test"
+                    ]
+                }
+            ],
+            [{
+                "name": "Frontend",
+                "icon": "preview",
+                "autoExecuteCommands": true,
+                "commands": [
+                    "cd frontend/"
+                ]
+            }],
+            {
+                "name": "Git",
+                "icon": "github",
+                "commands": [
+                    ""
+                ]
+            },
+            {
+                "name": "Others",
+                "icon": "debug-line-by-line",
+                "commands": [
+                    ""
+                ]
+            }
         ]
-      },
-      {
-        "name": "Others",
-        "icon": "debug-line-by-line",
-        "commands": [
-          ""
-        ]
-      }
-    ]
-  }
+    }
 }
