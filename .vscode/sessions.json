@@ -7,7 +7,8 @@
     "noClear": true,
     "sessions": {
         "default": [
-            [{
+            [
+                {
                     "name": "Accounts",
                     "icon": "account",
                     "autoExecuteCommands": true,
@@ -24,7 +25,8 @@
                     ]
                 }
             ],
-            [{
+            [
+                {
                     "name": "Contacts",
                     "icon": "notebook",
                     "autoExecuteCommands": true,
@@ -41,14 +43,16 @@
                     ]
                 }
             ],
-            [{
-                "name": "Frontend",
-                "icon": "preview",
-                "autoExecuteCommands": true,
-                "commands": [
-                    "cd frontend/"
-                ]
-            }],
+            [
+                {
+                    "name": "Frontend",
+                    "icon": "preview",
+                    "autoExecuteCommands": true,
+                    "commands": [
+                        "cd frontend/"
+                    ]
+                }
+            ],
             {
                 "name": "Git",
                 "icon": "github",
