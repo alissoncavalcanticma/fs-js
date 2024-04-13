@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch /*Routes as Switch*/, Route, Link} from 'react-router-dom';
+//Switch dependy is deprecated, using alias for the Router dependecy
 
 function Home(){
     return(
@@ -15,7 +16,7 @@ export default function Routes(){
             <div>
                 <Switch>
                     <Route path='/'>
-                        <Home/>
+                        <Home />
                     </Route>
                 </Switch>
             </div>

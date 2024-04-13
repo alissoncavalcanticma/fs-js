@@ -11,6 +11,10 @@
 ##### Dependências:
 
 Route: `npm i react-router-dom`
+Babel plugin proposal: `npm i -D @babel/plugin-proposal-private-property-in-object --legacy-peer-deps`
+
+Devido a versão 6 do react ser incompatível com o Switch, precisou fzer um downgrade para versão 5.
+react-router-dom: `npm i react-router-dom@5` 
 
 
 ##### Config's
