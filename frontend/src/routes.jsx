@@ -5,7 +5,8 @@ import {
     Route,                          //For route
     Link,                           //For Link to route
     useParams,                      //Hook for capture and use query and uri params
-    useLocation                     //Hook for redirect params, substitute for useRouteMatch
+    useLocation                    //Hook for redirect params, substitute for useRouteMatch
+    //useRouteMatch
 } from 'react-router-dom';
 
 import { Routes } from 'react-router'; //Hook substitute for Switch
@@ -20,7 +21,9 @@ function Home(){
     )
 }
 function Contacts(){
+    //let location = useLocation(); //Hook de path
     let {pathname} = useLocation(); //Hook de path
+    //let {match} = useRouteMatch();
     return(
         <div>
             <Menu/>
@@ -46,7 +49,7 @@ function Contacts(){
                 </Route>
             </Switch>*/}
             <Routes>
-                <Route path=":contactId" element={<Contact />}/>
+                <Route path="/contacts/:contactId" element={<Contact />}/>
             </Routes>
         </div>
     );
@@ -98,12 +101,12 @@ function Menu(){
     )
 }
 
-//Function Routes for redirect pages
+//Function AllRoutes/Routes for redirect pages
 
 export default function AllRoutes(){
     return(
         <Router>
-            <div>
+            
                 <Routes>
                     <Route path="/" element={ <Home /> } />
                     <Route path="/contacts/*" element={<Contacts /> } />
@@ -111,7 +114,7 @@ export default function AllRoutes(){
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/signup" element={<Signup />} />
                 </Routes>
-            </div>
+           
         </Router>
     )
 }
