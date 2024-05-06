@@ -5,13 +5,39 @@ import {
     Route,                          //For route
     Link,                           //For Link to route
     useParams,                      //Hook for capture and use query and uri params
-    useLocation                    //Hook for redirect params, substitute for useRouteMatch
-    //useRouteMatch
+    useLocation,
+    Outlet                          //Hook for definition sub routes
+
 } from 'react-router-dom';
 
 import { Routes } from 'react-router'; //Hook substitute for Switch
 
-//Functions of the pages
+//Main menu
+
+function Menu(){
+    return(
+        <div>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/contacts">Contatos</Link>
+                </li>
+                <li>
+                    <Link to="/messages">Lista de mensagens</Link>
+                </li>
+                <li>
+                    <Link to="/signin">Sair</Link>
+                </li>
+            </ul>
+        </div>
+    )
+}
+
+//Functions of the Menu pages
+
+//Option Home
 function Home(){
     return(
         <div>
@@ -20,10 +46,13 @@ function Home(){
         </div>
     )
 }
+
+//Option Contacts
 function Contacts(){
     //let location = useLocation(); //Hook de path
-    let {pathname} = useLocation(); //Hook de path
+    //let {pathname} = useLocation(); //Hook de path
     //let {match} = useRouteMatch();
+    let path = '/contacts';
     return(
         <div>
             <Menu/>
@@ -31,31 +60,28 @@ function Contacts(){
             <ul>
                 <li>
                     {/*<Link to={`${url}/1`}>Contato A</Link>*/}
-                    <Link to={`${pathname}/1`}>Contato A</Link>
+                    <Link to={`${path}/1`}>Contato A</Link>
                 </li>
                 <li>
                     {/*<Link to='/contacs/2'>Contato B</Link>*/}
-                    <Link to={`${pathname}/2`}>Contato B</Link>
+                    <Link to={`${path}/2`}>Contato B</Link>
                 </li>
                 <li>
                     {/*<Link to='/contacs/3'>Contato C</Link>*/}
-                    <Link to={`${pathname}/3`}>Contato C</Link>
+                    <Link to={`${path}/3`}>Contato C</Link>
                 </li>
             </ul>
-            {/*<Switch>
-                <Route exact path='{path}'></Route>
-                <Route path={`${path}/:contactId`}>
-                    <Contact />
-                </Route>
-            </Switch>*/}
-            <Routes>
-                <Route path="/contacts/:contactId" element={<Contact />}/>
-            </Routes>
+
+            {/* Definition of the sub route contact using outlet hook */}
+            <div>
+                <Outlet/>
+            </div>
+
         </div>
     );
 }
 
-
+// Function to sub route Contact
 function Contact(){
     let {contactId} = useParams();
     return(
@@ -64,6 +90,8 @@ function Contact(){
         </div>
     )
 }
+
+// Function Signin
 function Signin(){
     return(
         <div>
@@ -71,50 +99,43 @@ function Signin(){
         </div>
     )
 }
+
+// Function Signup
 function Signup(){
     return(
         <div>
+            
             <h2>Cadastro</h2>
         </div>
     )
 }
+
+// Function Messages
 function Messages(){
     return(
         <div>
+            <Menu/>
             <h2>Lista de Mensagens</h2>
         </div>
     )
 }
-function Menu(){
-    return(
-        <ul>
-            <li>
-                <Link to="/contacts">Contatos</Link>
-            </li>
-            <li>
-                <Link to="/messages">Lista de mensagens</Link>
-            </li>
-            <li>
-                <Link to="/signin">Sair</Link>
-            </li>
-        </ul>
-    )
-}
 
-//Function AllRoutes/Routes for redirect pages
 
+//Function AllRoutes/Routes for default redirect pages
 export default function AllRoutes(){
     return(
-        <Router>
-            
+            <Router>    
                 <Routes>
                     <Route path="/" element={ <Home /> } />
-                    <Route path="/contacts/*" element={<Contacts /> } />
+                    <Route path="/contacts/*" element={<Contacts /> } >
+                        <Route path=":contactId" element={<Contact />} />
+                    </Route>
                     <Route path="/messages" element={<Messages />} />
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/signup" element={<Signup />} />
                 </Routes>
-           
-        </Router>
-    )
+            </Router>
+    );
 }
+
+//export default AllRoutes;
