@@ -12,6 +12,11 @@ import {
 
 import { Routes } from 'react-router'; //Hook substitute for Switch
 
+//Import Functions
+
+import Signin from '../src/pages/public/SignIn';
+
+
 //Main menu
 
 function Menu(){
@@ -87,15 +92,6 @@ function Contact(){
     return(
         <div>
             <h3>Contato: {contactId}</h3>
-        </div>
-    )
-}
-
-// Function Signin
-function Signin(){
-    return(
-        <div>
-            <h2>Login</h2>
         </div>
     )
 }
