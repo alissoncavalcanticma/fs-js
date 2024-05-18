@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Button, Form, Container, Row, Col, FormGroup} from 'react-bootstrap';
 import Logo from '../../../assets/logo.png';
+import { BoxContext, BoxForm } from './styles';
 
 
 //Function SignIn
@@ -18,9 +19,10 @@ class Signin extends React.Component{
             <Container>
                 <Row className="justify-align-content-md-center"> 
                     <Col xs={12} md={5}>
-                        <div>
+                        <BoxContent>
                             <img src={Logo} alt='MailShrimp'/>
-                        </div>
+                        </BoxContent>
+                        <BoxForm>
                         <h2>Login</h2>
                         <p>Informe seus dados para autenticar: </p>
                         <Form onSubmit={this.handleSigin}>
@@ -40,6 +42,7 @@ class Signin extends React.Component{
                                 Fazer Login
                             </Button>
                         </Form>
+                        </BoxForm>
                     </Col>
                 </Row>
             </Container>
