@@ -3,7 +3,7 @@ import React from 'react';
 
 import {Button, Form, Container, Row, Col, FormGroup} from 'react-bootstrap';
 import Logo from '../../../assets/logo.png';
-import { BoxContext, BoxForm } from './styles';
+import { BoxContext, BoxForm } from './styles'; 
 
 
 //Function SignIn
