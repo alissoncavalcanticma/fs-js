@@ -9,6 +9,8 @@ import { BoxContent, BoxForm } from './styles';
 //usar withRouter para usar props na rota ** Também precisa ajustar o export
 import {Link} from 'react-router-dom';
 
+
+
 //método que aciona o axios
 import api from '../../../services/api';
 //método responsável por salvar o login no localStorage
@@ -27,7 +29,7 @@ class Signin extends React.Component{
     handleSigin = async(event) => {
         //Evita que seja executada a request para própria Pagina
         event.preventDefault();
-        
+
         const {email, password, error} = this.state;
 
         if(!email || !password){
@@ -43,7 +45,9 @@ class Signin extends React.Component{
                 });
                 login(response.data.token);
                 // eslint-disable-next-line react/prop-types
-                //this.props.useHistory.push("/");
+                this.props.useHistory.push("/");
+                //history.push('/');
+                console.log("oi");
 
             } catch (error) {
                 console.log(error);
