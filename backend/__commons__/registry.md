@@ -55,3 +55,19 @@ Ex:
     "dev": "nodemon -e ts,json --ignore dist --exec \" npm run compile\""
   },
 ```
+
+##### Para permitir o acesso direto ou a partir de algum domínio específico, necessário instalar o cors:
+
+`npm i cors --save`
+`npm i @types/cors --save-dev`
+
+### import e declare no commons:
+
+```
+import cors from 'cors'
+...
+
+app.use(cors())
+
+
+``

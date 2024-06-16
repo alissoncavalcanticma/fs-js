@@ -6,6 +6,8 @@ import { BoxContent, BoxForm } from './styles';
 
 import Logo from '../../../assets/logo.png';
 
+import api from "../../../services/api";
+
 class SignUp extends React.Component {
     state = {
         name: '',
@@ -19,6 +21,25 @@ class SignUp extends React.Component {
     handleSignUp = async(event) => {
         event.preventDefault();
         const {name, email, password, domain, isLoading} = this.state;
+
+        if(!name || !email || !password || !domain){
+            this.setState({error: "Informe todos os campos para se cadastrar!"})
+        }else{
+            //Apaga objeto de erro
+            this.setState({error: ""})
+
+            //Chamada de endpoint POST /accounts para login
+            try {
+                await api.post('accounts', {
+                    name, email, password, domain
+                });
+                // eslint-disable-next-line react/prop-types
+                this.props.history.push("/signin");
+            } catch (error) {
+                console.log(error);
+                this.setState({error: "Ocorreru um erro ao logar."})
+            }
+        }
     }
 
     renderError = () => {
@@ -42,7 +63,7 @@ class SignUp extends React.Component {
                         <BoxForm>
                             <h2>Cadastro</h2>
                             <p>Preencha com seus dados!</p>
-                            <Form>
+                            <Form onSubmit={this.handleSignUp}>
                                 {this.state.error && this.renderError()}
                                 <FormGroup controlId="nomeGroup">
                                     <FormLabel>Nome:</FormLabel>
@@ -65,7 +86,7 @@ class SignUp extends React.Component {
                                     <Form.Control 
                                         type="url" 
                                         placeholder="Digite seu domínio"
-                                        onChenge={e => this.setState({domain: e.target.value})}
+                                        onChange={e => this.setState({domain: e.target.value})}
                                         />
                                 </FormGroup>
                                 <FormGroup controlId="senhaGroup">
@@ -73,7 +94,7 @@ class SignUp extends React.Component {
                                     <Form.Control 
                                         type="password" 
                                         placeholder="Digite sua senha"
-                                        onChange={e => this.setState({senha: e.target.value})}
+                                        onChange={e => this.setState({password: e.target.value})}
                                         />
                                 </FormGroup>
                                 <br />
