@@ -19,6 +19,13 @@ class SignUp extends React.Component {
     handleSignUp = async(event) => {
         event.preventDefault();
         const {name, email, password, domain, isLoading} = this.state;
+
+        if(!name || !email || !password || !domain){
+            this.setState({error: "Informe todos os campos para se cadastrar!"})
+        }else{
+            this.setState({error: ""})
+            console.log("ok")
+        }
     }
 
     renderError = () => {
@@ -42,7 +49,7 @@ class SignUp extends React.Component {
                         <BoxForm>
                             <h2>Cadastro</h2>
                             <p>Preencha com seus dados!</p>
-                            <Form>
+                            <Form onSubmit={this.handleSignUp}>
                                 {this.state.error && this.renderError()}
                                 <FormGroup controlId="nomeGroup">
                                     <FormLabel>Nome:</FormLabel>
@@ -65,7 +72,7 @@ class SignUp extends React.Component {
                                     <Form.Control 
                                         type="url" 
                                         placeholder="Digite seu domínio"
-                                        onChenge={e => this.setState({domain: e.target.value})}
+                                        onChange={e => this.setState({domain: e.target.value})}
                                         />
                                 </FormGroup>
                                 <FormGroup controlId="senhaGroup">
@@ -73,7 +80,7 @@ class SignUp extends React.Component {
                                     <Form.Control 
                                         type="password" 
                                         placeholder="Digite sua senha"
-                                        onChange={e => this.setState({senha: e.target.value})}
+                                        onChange={e => this.setState({password: e.target.value})}
                                         />
                                 </FormGroup>
                                 <br />
