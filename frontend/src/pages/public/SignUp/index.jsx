@@ -6,6 +6,8 @@ import { BoxContent, BoxForm } from './styles';
 
 import Logo from '../../../assets/logo.png';
 
+import api from "../../../services/api";
+
 class SignUp extends React.Component {
     state = {
         name: '',
@@ -23,8 +25,20 @@ class SignUp extends React.Component {
         if(!name || !email || !password || !domain){
             this.setState({error: "Informe todos os campos para se cadastrar!"})
         }else{
+            //Apaga objeto de erro
             this.setState({error: ""})
-            console.log("ok")
+
+            //Chamada de endpoint POST /accounts para login
+            try {
+                await api.post('accounts', {
+                    name, email, password, domain
+                });
+                // eslint-disable-next-line react/prop-types
+                this.props.history.push("/signin");
+            } catch (error) {
+                console.log(error);
+                this.setState({error: "Ocorreru um erro ao logar."})
+            }
         }
     }
 
