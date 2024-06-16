@@ -7,6 +7,7 @@ const api = axios.create({
     baseURL: 'http://localhost:3000'
 });
 
+//Função para incluir o otken na request antes de executar
 api.interceptors.request.use(async(config) => {
     const token = getToken();
 

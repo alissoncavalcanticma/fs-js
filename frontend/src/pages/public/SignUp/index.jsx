@@ -28,7 +28,7 @@ class SignUp extends React.Component {
             //Apaga objeto de erro
             this.setState({error: ""})
 
-            //Chamada de endpoint POST /accounts para login
+            //Chamada de endpoint POST /accounts para cadastrar
             try {
                 await api.post('accounts', {
                     name, email, password, domain
