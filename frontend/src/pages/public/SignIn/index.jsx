@@ -1,10 +1,10 @@
 
 import React from 'react';
 
-import {Form, Container, Row, Col, FormGroup} from 'react-bootstrap';
+import {Form, Container, Row, Col} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Logo from '../../../assets/logo.png';
-import { BoxContext, BoxForm } from './styles'; 
+import { BoxContent, BoxForm } from './styles'; 
 
 import {Link} from 'react-router-dom';
 
@@ -22,9 +22,9 @@ class Signin extends React.Component{
             <Container>
                 <Row className="justify-content-md-center"> 
                     <Col xs={12} md={5}>
-                        <BoxContext>
+                        <BoxContent>
                             <img src={Logo} alt='MailShrimp'/>
-                        </BoxContext>
+                        </BoxContent>
                         <BoxForm>
                             <h2>Login</h2>
                             <p>Informe seus dados para autenticar: </p>
@@ -49,10 +49,10 @@ class Signin extends React.Component{
                                 </div>
                             </Form>
                         </BoxForm>
-                        <BoxContext>
+                        <BoxContent>
                             <p>Novo na plataforma?</p>
                             <Link className="button" to="/signup">Crie sua conta agora</Link>
-                        </BoxContext>
+                        </BoxContent>
                     </Col>
                 </Row>
             </Container>

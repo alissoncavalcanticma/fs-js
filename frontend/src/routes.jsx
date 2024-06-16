@@ -5,7 +5,7 @@ import {
     Route,                          //For route
     Link,                           //For Link to route
     useParams,                      //Hook for capture and use query and uri params
-    useLocation,
+    //useLocation,
     Outlet                          //Hook for definition sub routes
 
 } from 'react-router-dom';
@@ -14,7 +14,8 @@ import { Routes } from 'react-router'; //Hook substitute for Switch
 
 //Import Functions
 
-import Signin from '../src/pages/public/SignIn';
+import SignIn from '../src/pages/public/SignIn';
+import SignUp from '../src/pages/public/SignUp';
 
 
 //Main menu
@@ -96,16 +97,6 @@ function Contact(){
     )
 }
 
-// Function Signup
-function Signup(){
-    return(
-        <div>
-            
-            <h2>Cadastro</h2>
-        </div>
-    )
-}
-
 // Function Messages
 function Messages(){
     return(
@@ -127,8 +118,8 @@ export default function AllRoutes(){
                         <Route path=":contactId" element={<Contact />} />
                     </Route>
                     <Route path="/messages" element={<Messages />} />
-                    <Route path="/signin" element={<Signin />} />
-                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/signin" element={<SignIn />} />
+                    <Route path="/signup" element={<SignUp />} />
                 </Routes>
             </Router>
     );
